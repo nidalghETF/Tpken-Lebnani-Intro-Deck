@@ -63,7 +63,41 @@
         .lang-btn:hover:not(.active) {
             background: rgba(255, 255, 255, 0.1);
         }
+/* Slide 0: Logo Splash Screen */
+.slide-0 { 
+    background: #0a4291; /* Matching dark blue theme */
+}
 
+/* Logo container for Slide 0 */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Logo image styling for Slide 0 */
+.main-logo {
+    max-width: 70%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    animation: logoReveal 2s ease-out;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2));
+}
+
+/* Elegant logo reveal animation */
+@keyframes logoReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
         .slide {
             height: 100vh;
             width: 100vw;
@@ -510,6 +544,12 @@
     </div>
 
     <!-- Slides Container -->
+    <!-- Slide 0: Logo Splash Screen -->
+<div class="slide slide-0 active">
+    <div class="container logo-container">
+        <img src="Blue Logo.png" alt="Token-Lebnani Logo" class="main-logo">
+    </div>
+</div>
     <div id="slidesContainer">
         
         <!-- Slide 1: Cover & Core Proposition -->
