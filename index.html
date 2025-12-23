@@ -65,12 +65,12 @@
         .slide-4 { background: #99ccff; }
         .slide-5 { background: #80bfff; }
         .slide-6 { background: #66b3ff; }
-        .slide-7 { background: #0a4291; color: white; } /* Peak Dark Blue */
+        .slide-7 { background: #0a4291; } /* Peak Dark Blue - Now has dark text */
         .slide-8 { background: #1a75c2; color: white; }
         .slide-9 { background: #4d94d9; color: white; }
         .slide-10 { background: #80bfff; color: white; }
-        .slide-11 { background: #b3d9ff; color: white; }
-        .slide-12 { background: #cce5ff; }
+        .slide-11 { background: #b3d9ff; color: #1a1a1a; } /* Dark text on light blue */
+        .slide-12 { background: #cce5ff; color: #1a1a1a; }
         .slide-13 { background: #e6f2ff; }
 
         .split-screen {
@@ -145,6 +145,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
+            color: #1a1a1a; /* Dark text for story cards */
         }
 
         .story-card:hover {
@@ -158,6 +159,7 @@
             margin: 1rem 0;
             font-family: monospace;
             font-size: 24px;
+            color: #1a1a1a;
         }
 
         .workflow-steps {
@@ -178,19 +180,45 @@
             margin-right: 0.5rem;
         }
 
-        .badges {
+        /* NEW: Two-row badge layout for Slide 12 */
+        .badges-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             margin: 2rem 0;
+        }
+
+        .badge-row {
+            display: contents;
         }
 
         .badge {
             background: rgba(255,255,255,0.1);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        /* Specific styles for light background slides */
+        .slide-11 .step {
+            background: rgba(10, 66, 145, 0.1);
+            border-left: 4px solid #0a4291;
+            color: #1a1a1a;
+        }
+
+        .slide-11 .step-number {
+            color: #0a4291;
+        }
+
+        .slide-12 .badge {
+            background: rgba(10, 66, 145, 0.1);
+            border: 2px solid rgba(10, 66, 145, 0.2);
+            color: #1a1a1a;
         }
 
         .metric {
@@ -266,7 +294,7 @@
             .split-screen,
             .privacy-columns,
             .story-columns,
-            .badges {
+            .badges-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -285,6 +313,11 @@
             .nav-buttons {
                 flex-direction: column;
                 bottom: 1rem;
+            }
+            
+            .flow-diagram {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -357,11 +390,11 @@
                 <h2>Liquidity Without Legacy Friction.</h2>
                 
                 <div class="flow-diagram">
-                    <div class="flow-item">For Sale Sign</div>
+                    <div class="flow-item">Select from Featured Real Estate</div>
                     <div class="flow-arrow">→</div>
-                    <div class="flow-item">⏱️ Exit in &lt;7 min</div>
+                    <div class="flow-item">Submit KYC Approval (&lt;7 min)</div>
                     <div class="flow-arrow">→</div>
-                    <div class="flow-item">Trade Window</div>
+                    <div class="flow-item">Start Buying</div>
                 </div>
                 
                 <p class="footnote">*The 6% Lebanese property registration tax applies once at tokenization. No additional taxes on secondary trades.</p>
@@ -371,19 +404,19 @@
         <!-- Slide 7: Story - "A Day in the Life" -->
         <div class="slide slide-7">
             <div class="container">
-                <h2>A Day in Your (Future) Life.</h2>
+                <h2 style="color: #1a1a1a;">A Day in Your (Future) Life.</h2>
                 
                 <div class="story-columns">
                     <div class="story-card" onclick="showModal('Portfolio: Beirut Building (Partial)')">
-                        <p>Heir opens app</p>
+                        <p style="color: #1a1a1a;">Open the app</p>
                         <div class="phone-screen">Portfolio: Beirut Building (Partial)</div>
                     </div>
                     <div class="story-card" onclick="showModal('Confirm Sale: 10 tokens @ $1,200')">
-                        <p>Taps 'Sell 10 Tokens'</p>
+                        <p style="color: #1a1a1a;">Taps 'Sell 10 Tokens'</p>
                         <div class="phone-screen">Confirm Sale: 10 tokens @ $1,200</div>
                     </div>
                     <div class="story-card" onclick="showModal('Wallet: +$12,000')">
-                        <p>Sees USD deposit</p>
+                        <p style="color: #1a1a1a;">Sees USD deposit</p>
                         <div class="phone-screen">Wallet: +$12,000</div>
                     </div>
                 </div>
@@ -405,13 +438,13 @@
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 1:</span> Agreement → Property owner contracts with Token-Lebnani to tokenize a portion (e.g., 50%) of their asset.
+                        <span class="step-number">Step 1:</span> Agreement → Property owner contracts with Token-Lebnani to tokenize the real estate.
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 2:</span> ADGM SPV → We create a Special Purpose Vehicle in Abu Dhabi. It will issue tokens and be owned 100% by token holders.
+                        <span class="step-number">Step 2:</span> ADGM Holding Company → We create a Holding Company in Abu Dhabi. It will issue tokens and be owned 100% by token holders.
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 3:</span> Lebanese SPV → The ADGM SPV incorporates a Lebanese SPV, which will legally hold the property title, satisfying local law.
+                        <span class="step-number">Step 3:</span> Lebanese SPV → The ADGM Holding Company incorporates a Lebanese SPV, which will legally hold the property title, satisfying local law.
                     </div>
                 </div>
                 
@@ -426,7 +459,7 @@
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 4:</span> Title Transfer → The owner transfers the agreed property portion to the Lebanese SPV. The 6% Lebanese registration tax is paid once, here.
+                        <span class="step-number">Step 4:</span> Title Transfer → The owner transfers the property to the Lebanese SPV. The 6% Lebanese registration tax is paid once, here.
                     </div>
                     <div class="step">
                         <span class="step-number">Step 5:</span> Appoint Facility Manager (FMC) → The SPV contracts an independent FMC to handle all operations: collect rent (in USD), pay expenses, and send net income to the UAE.
@@ -440,7 +473,7 @@
         <!-- Slide 11: The Workflow - Step 3 -->
         <div class="slide slide-11">
             <div class="container">
-                <h2>Step 3: How You Become an Owner</h2>
+                <h2 style="color: #1a1a1a;">Step 3: How You Become an Owner</h2>
                 
                 <div class="workflow-steps">
                     <div class="step">
@@ -454,7 +487,7 @@
                     </div>
                 </div>
                 
-                <p>Key Insight: Your ownership is direct, legally enforceable, and designed for liquidity. The one-time 6% tax is behind you.</p>
+                <p style="color: #1a1a1a;">Key Insight: Your ownership is direct, legally enforceable, and designed for liquidity. The one-time 6% tax is behind you.</p>
             </div>
         </div>
 
@@ -463,15 +496,28 @@
             <div class="container">
                 <h2>Backed by Regulators Who Enforce Your Rights.</h2>
                 
-                <div class="badges">
+                <!-- NEW: Two-row badge grid -->
+                <div class="badges-grid">
+                    <!-- First Row -->
                     <div class="badge">
-                        <h3>ADGM Licensed Entity</h3>
+                        <h3>ADGM Regulated</h3>
                     </div>
                     <div class="badge">
-                        <h3>Vetted Lebanese Facility Manager</h3>
+                        <h3>Title Deed Registered</h3>
                     </div>
                     <div class="badge">
-                        <h3>Big-4 Audited</h3>
+                        <h3>ADGM Audited & Compliant</h3>
+                    </div>
+                    
+                    <!-- Second Row -->
+                    <div class="badge">
+                        <h3>All Documents Published</h3>
+                    </div>
+                    <div class="badge">
+                        <!-- Empty middle cell in second row -->
+                    </div>
+                    <div class="badge">
+                        <h3>Vetted Facility Management</h3>
                     </div>
                 </div>
                 
@@ -482,7 +528,7 @@
         <!-- Slide 13: Call to Action -->
         <div class="slide slide-13">
             <div class="container">
-                <h2>Let's build your legacy, not just your portfolio.</h2>
+                <h2>Build your legacy, not just your portfolio.</h2>
                 <p>I'm gathering insights from trusted advisors. Your perspective on this model would be invaluable.</p>
                 
                 <button class="cta-button" onclick="shareThoughts()">Share Your Thoughts</button>
@@ -545,12 +591,43 @@
             alert('Confirm Sale: ' + content);
         }
 
-        // CTA button interaction
+        // CTA button interaction - Now with Formspree integration
         function shareThoughts() {
-            const thoughts = prompt('Your thoughts on this model:');
+            const thoughts = prompt('Please share your thoughts on this model:');
             if (thoughts) {
-                alert('Thank you for your insights. We\'ll be in touch.');
+                // Send to Formspree
+                sendToFormspree(thoughts);
+                alert('Thank you for your valuable insights. We\'ll be in touch shortly.');
             }
+        }
+
+        // Function to send data to Formspree
+        function sendToFormspree(message) {
+            // Replace YOUR_FORMSPREE_ID with your actual Formspree form ID
+            const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
+            
+            fetch(formspreeEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: 'user@example.com', // You can collect email separately if needed
+                    message: message,
+                    source: 'Token-Lebnani Microsite',
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Thoughts submitted successfully');
+                } else {
+                    console.error('Error submitting thoughts');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
 
         // Initialize
@@ -570,4 +647,3 @@
     </script>
 </body>
 </html>
-
