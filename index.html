@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token-Lebnani | ADGM-Regulated Real Estate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 32px;
+            line-height: 1.4;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .slide {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            scroll-snap-align: start;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Slide 1: Cover */
+        .slide-1 {
+            background: linear-gradient(135deg, #0a4291 0%, #1a1a1a 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .sub-headline {
+            font-size: 24px;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+
+        /* Slide 2: Hook */
+        .slide-2 {
+            background: #f0f0f0;
+        }
+
+        .split-screen {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hook-visual {
+            background: linear-gradient(135deg, #0a4291 0%, #107010 100%);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .watermark {
+            font-size: 120px;
+            opacity: 0.1;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footnote {
+            font-size: 20px;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        /* Slide 3: Problem */
+        .slide-3 {
+            background: #f0f0f0;
+            text-align: center;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .problem-icon {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Slide 4: Time Benefit */
+        .slide-4 {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+        }
+
+        .metric-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .metric {
+            font-size: 72px;
+            font-weight: bold;
+            color: #107010;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Slide 5: Privacy */
+        .slide-5 {
+            background: #f0f0f0;
+        }
+
+        .privacy-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .column {
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .public {
+            background: #ffebee;
+            border: 2px solid #ffcdd2;
+        }
+
+        .private {
+            background: #e8f5e8;
+            border: 2px solid #c8e6c9;
+        }
+
+        /* Slide 6: Liquidity */
+        .slide-6 {
+            background: linear-gradient(135deg, #0a4291 0%, #1a1a1a 100%);
+            color: white;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .flow-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .flow-arrow {
+            font-size: 32px;
+            opacity: 0.7;
+        }
+
+        /* Slide 7: Story */
+        .slide-7 {
+            background: #f5f7fa;
+        }
+
+        .story-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .story-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .phone-screen {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 24px;
+        }
+
+        /* Slide 8: Trust Layer */
+        .slide-8 {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a4291 100%);
+            color: white;
+        }
+
+        .bridge-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .bridge-item {
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 24px;
+            opacity: 0.7;
+        }
+
+        /* Slide 9: Credibility */
+        .slide-9 {
+            background: #f0f0f0;
+        }
+
+        .badges {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .badge {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Slide 10: CTA */
+        .slide-10 {
+            background: linear-gradient(135deg, #0a4291 0%, #107010 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: white;
+            color: #0a4291;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+        }
+
+        .cta-button:hover {
+            background: #f0f0f0;
+            transform: scale(1.05);
+        }
+
+        .cta-button:hover::after {
+            content: " Reserve Your Slice";
+        }
+
+        /* Scroll Snap */
+        .slides-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .split-screen,
+            .privacy-columns,
+            .story-columns,
+            .badges {
+                grid-template-columns: 1fr;
+            }
+            
+            body {
+                font-size: 24px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        
+        <!-- Slide 1: Cover -->
+        <div class="slide slide-1">
+            <div class="container">
+                <h1>Own Beirut. Not the Hassle.</h1>
+                <p class="sub-headline">Token-Lebnani | ADGM-Regulated</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Hook -->
+        <div class="slide slide-2">
+            <div class="container">
+                <div class="split-screen">
+                    <div>
+                        <h2>Own institutional-grade Beirut real estate with minimal capital.</h2>
+                        <p>We've engineered a bridge. Turn conviction into a portfolio position with an entry point measured in thousands, not hundreds of thousands.</p>
+                        <p class="footnote">$1,000 minimum position. No cap-table dilution.</p>
+                    </div>
+                    <div class="hook-visual">
+                        <div class="watermark">$1k</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Problem -->
+        <div class="slide slide-3">
+            <div class="container">
+                <h2>The world changed. Ownership didn't.</h2>
+                <p>Banking gates. 6% transfer taxes. Notary delays. Tenant calls. The system is a tax on your time, liquidity, and discretion.</p>
+                <p>Your wealth deserves modern infrastructure.</p>
+                
+                <div class="problem-grid">
+                    <div class="problem-icon">🏦 Banking Gates</div>
+                    <div class="problem-icon">%</div>
+                    <div class="problem-icon">📋 Notary Delays</div>
+                    <div class="problem-icon">📞 Tenant Calls</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Time Benefit -->
+        <div class="slide slide-4">
+            <div class="container">
+                <h2>Your Time, Returned.</h2>
+                <p>No calls. No headaches. Just automated USD income sent directly to your wallet.</p>
+                
+                <div class="metric-container">
+                    <div class="metric" id="yieldMetric">+4%</div>
+                    <p>Net USD yield after all fees and FMC expenses.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Privacy -->
+        <div class="slide slide-5">
+            <div class="container">
+                <h2>Your Privacy, Protected.</h2>
+                
+                <div class="privacy-columns">
+                    <div class="column public">
+                        <h3>Public Lebanese Records</h3>
+                        <p>(Anyone Can See)</p>
+                    </div>
+                    <div class="column private">
+                        <h3>Private Registry</h3>
+                        <p>(Only You & ADGM)</p>
+                    </div>
+                </div>
+                
+                <p>Your name never appears on Lebanese property records. All legal rights are enforceable through ADGM courts.</p>
+                <p class="footnote">Fully compliant with Lebanese property law.</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Liquidity -->
+        <div class="slide slide-6">
+            <div class="container">
+                <h2>Liquidity Without Legacy Friction.</h2>
+                
+                <div class="flow-diagram">
+                    <div class="flow-item">For Sale Sign</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">⏱️ Exit in &lt;7 min</div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">Trade Window</div>
+                </div>
+                
+                <p class="footnote">*The 6% Lebanese property registration tax applies once at tokenization. No recurring sales tax on secondary trades.</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Story -->
+        <div class="slide slide-7">
+            <div class="container">
+                <h2>A Day in Your (Future) Life.</h2>
+                
+                <div class="story-columns">
+                    <div class="story-card" onclick="showModal('Portfolio: Beirut Building (Partial)')">
+                        <p>Heir opens app</p>
+                        <div class="phone-screen">Portfolio: Beirut Building (Partial)</div>
+                    </div>
+                    <div class="story-card" onclick="showModal('Confirm Sale: 10 tokens?')">
+                        <p>Taps 'Sell 10 Tokens'</p>
+                        <div class="phone-screen">Confirm Sale: 10 tokens?</div>
+                    </div>
+                    <div class="story-card" onclick="showModal('Wallet: +$12,000 USD')">
+                        <p>Sees USD deposit</p>
+                        <div class="phone-screen">Wallet: +$12,000 USD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Trust Layer -->
+        <div class="slide slide-8">
+            <div class="container">
+                <h2>One Regulated Bridge. Your Local Hassles, Handled.</h2>
+                
+                <div class="bridge-diagram">
+                    <div class="bridge-item">You</div>
+                    <div class="arrow">→<br>Owns tokens in</div>
+                    <div class="bridge-item">ADGM-Regulated SPV</div>
+                </div>
+                
+                <div class="bridge-diagram">
+                    <div style="grid-column: 2; margin: 0 auto;">↓<br>100% owns</div>
+                </div>
+                
+                <div class="bridge-diagram">
+                    <div class="bridge-item">Lebanese SPV</div>
+                    <div class="arrow">→<br>Holds title & manages via</div>
+                    <div class="bridge-item">Vetted FMC</div>
+                </div>
+                
+                <p>Court-tested ADGM legal framework.</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Credibility -->
+        <div class="slide slide-9">
+            <div class="container">
+                <h2>Backed by Regulators Who Enforce Your Rights.</h2>
+                
+                <div class="badges">
+                    <div class="badge">
+                        <h3>ADGM Licensed Entity</h3>
+                        <p>+ Official Seal</p>
+                    </div>
+                    <div class="badge">
+                        <h3>Vetted Lebanese Facility Manager</h3>
+                        <p>+ AUM/Experience</p>
+                    </div>
+                    <div class="badge">
+                        <h3>Big-4 Audited</h3>
+                        <p>(Logo grayed if under NDA)</p>
+                    </div>
+                </div>
+                
+                <p>Operational structure. First asset tokenization: Summer 2026.</p>
+            </div>
+        </div>
+
+        <!-- Slide 10: CTA -->
+        <div class="slide slide-10">
+            <div class="container">
+                <h2>Let's build your legacy, not just your portfolio.</h2>
+                <p>I'm gathering insights from trusted advisors. Your perspective on this model would be invaluable.</p>
+                
+                <button class="cta-button" onclick="shareThoughts()">Share Your Thoughts</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Animated yield metric
+        function animateYield() {
+            const metric = document.getElementById('yieldMetric');
+            let current = 0;
+            const target = 4;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                metric.textContent = '+' + Math.floor(current) + '%';
+            }, 16);
+        }
+
+        // Modal for story cards
+        function showModal(content) {
+            alert('Confirm Sale: ' + content);
+        }
+
+        // CTA button interaction
+        function shareThoughts() {
+            const thoughts = prompt('Your thoughts on this model:');
+            if (thoughts) {
+                alert('Thank you for your insights. We\'ll be in touch.');
+            }
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            animateYield();
+            
+            // Add scroll snap polyfill for better UX
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                slide.addEventListener('wheel', (e) => {
+                    if (e.deltaY > 0) {
+                        slide.nextElementSibling?.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        slide.previousElementSibling?.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
