@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Token-Lebnani | ADGM-Regulated Real Estate</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,7 +14,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-size: 32px;
             font-weight: 400;
             line-height: 1.4;
@@ -21,6 +22,46 @@
             overflow: hidden;
             position: relative;
             scroll-behavior: smooth;
+        }
+
+        body.rtl {
+            direction: rtl;
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1001;
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 0.3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #0a4291;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .slide {
@@ -49,7 +90,7 @@
             z-index: 2;
         }
 
-        /* Consistent Typography - ALL SAME */
+        /* Consistent Typography */
         h1, h2 {
             font-weight: 700;
             margin-bottom: 1rem;
@@ -59,36 +100,27 @@
         }
 
         h3 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: #0a4291;
+            color: white;
         }
 
         p {
             font-size: 32px;
-            font-weight: 600;
+            font-weight: 400;
             margin-bottom: 1rem;
             opacity: 0.95;
             color: white;
         }
 
         /* UNIFIED COLOR SCHEME - Dark Blue Gradient */
-        .slide-1 { background: #0a4291; }  /* Dark Blue */
-        .slide-2 { background: #0a4291; }
-        .slide-3 { background: #0a4291; }
-        .slide-4 { background: #0a4291; }
-        .slide-5 { background: #0a4291; }
-        .slide-6 { background: #0a4291; }
-        .slide-7 { background: #0a4291; }
-        .slide-8 { background: #0a4291; }
-        .slide-9 { background: #0a4291; }
-        .slide-10 { background: #0a4291; }
-        .slide-11 { background: #0a4291; }
-        .slide-12 { background: #0a4291; }
-        .slide-13 { background: #0a4291; }
+        .slide-1, .slide-2, .slide-3, .slide-4, .slide-5, 
+        .slide-6, .slide-7, .slide-8, .slide-9, .slide-10, 
+        .slide-11, .slide-12, .slide-13 {
+            background: #0a4291;
+        }
 
-        /* Consistent layout components */
         .footnote {
             font-size: 20px;
             font-weight: 400;
@@ -104,7 +136,7 @@
             margin: 2rem 0;
         }
 
-        /* UNIFIED BLOCK STYLING - All blocks white with dark blue border */
+        /* UNIFIED BLOCK STYLING */
         .column, .flow-item, .story-card, .step, .badge {
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid #0a4291;
@@ -125,7 +157,7 @@
             transform: translateY(0);
         }
 
-        /* Staggered animations for items */
+        /* Staggered animations */
         .slide.active .column:nth-child(1) { transition-delay: 0.2s; }
         .slide.active .column:nth-child(2) { transition-delay: 0.4s; }
         .slide.active .flow-item:nth-child(1) { transition-delay: 0.2s; }
@@ -148,9 +180,16 @@
             padding: 2rem;
         }
 
-        .column h3 {
+        /* FIX: Dark blue text for specific elements */
+        .column h3, .story-card h3, .story-card p {
             color: #0a4291;
             font-weight: 700;
+        }
+
+        .column p {
+            color: #0a4291;
+            font-size: 24px;
+            margin-top: 0.5rem;
         }
 
         .flow-diagram {
@@ -191,11 +230,6 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        .story-card p {
-            font-weight: 600;
-            color: #0a4291;
-        }
-
         .phone-screen {
             background: #f0f0f0;
             padding: 1rem;
@@ -218,11 +252,22 @@
             text-align: left;
         }
 
+        body.rtl .step {
+            text-align: right;
+            border-left: none;
+            border-right: 4px solid #0a4291;
+        }
+
         .step-number {
             font-weight: 700;
             color: #0a4291;
             margin-right: 0.5rem;
             font-size: 32px;
+        }
+
+        body.rtl .step-number {
+            margin-right: 0;
+            margin-left: 0.5rem;
         }
 
         .step span:not(.step-number) {
@@ -301,8 +346,28 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .cta-button:hover::after {
-            content: " Reserve Your Slice";
+        /* Progress indicator */
+        .progress-container {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.rtl .progress-container {
+            right: auto;
+            left: 2rem;
+        }
+
+        .progress-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
         }
 
         /* Navigation Buttons */
@@ -343,35 +408,27 @@
             cursor: not-allowed;
         }
 
-        .nav-btn:disabled:hover {
-            background: white;
-            color: #0a4291;
-            transform: none;
-            box-shadow: none;
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* Progress indicator */
-        .progress-container {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .pulse-animation {
+            animation: pulse 2s infinite;
         }
 
-        .progress-text {
-            font-size: 18px;
-            font-weight: 600;
-            color: white;
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .flow-arrow {
+            animation: bounce 2s infinite;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .split-screen,
             .privacy-columns,
             .story-columns,
             .badges-grid {
@@ -400,11 +457,6 @@
                 width: 90%;
             }
             
-            .nav-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
             .flow-diagram {
                 flex-direction: column;
                 gap: 1rem;
@@ -431,39 +483,30 @@
             .progress-container {
                 top: 1rem;
                 right: 1rem;
-                padding: 0.3rem 0.8rem;
             }
             
-            .progress-text {
-                font-size: 16px;
+            body.rtl .progress-container {
+                right: auto;
+                left: 1rem;
             }
-        }
-
-        /* Pulse animation for important elements */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-
-        /* Arrow bounce animation */
-        @keyframes bounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-        }
-
-        .flow-arrow {
-            animation: bounce 2s infinite;
+            
+            .language-switcher {
+                top: 1rem;
+                left: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+
     <!-- Progress Indicator -->
     <div class="progress-container">
-        <div class="progress-text">Slide <span id="currentSlide">1</span> of <span id="totalSlides">13</span></div>
+        <div class="progress-text"><span id="currentSlide">1</span> / <span id="totalSlides">13</span></div>
     </div>
 
     <!-- Slides Container -->
@@ -472,12 +515,12 @@
         <!-- Slide 1: Cover & Core Proposition -->
         <div class="slide slide-1 active">
             <div class="container">
-                <h1>Own Beirut. Not the Hassle.</h1>
-                <p class="sub-headline">Token-Lebnani | ADGM-Regulated</p>
+                <h1 data-en="Own Beirut. Not the Hassle." data-ar="امتلك في لبنان. بدون متاعب.">Own Beirut. Not the Hassle.</h1>
+                <p class="sub-headline" data-en="Token-Lebnani | ADGM-Regulated" data-ar="Token-Lebnani | خاضعة لرقابة سوق أبوظبي العالمي">Token-Lebnani | ADGM-Regulated</p>
                 <div class="intro-text">
-                    <p>Token-Lebnani is an Abu Dhabi based company (ADGM-regulated) enabling fractional ownership of Lebanese real estate through digital tokens.</p>
-                    <p>We replace traditional barriers—banking gates, notary delays, and 6% transfer taxes—with a secure, direct, and efficient structure.</p>
-                    <p>You own a stake directly in your digital wallet, receive automated USD income, and can transfer ownership in minutes without additional local costs or complexity.</p>
+                    <p data-en="Token-Lebnani is an Abu Dhabi based company (ADGM-regulated) enabling fractional ownership of Lebanese real estate through digital tokens." data-ar="Token-Lebnani شركة مقرها أبوظبي (خاضعة لرقابة سوق أبوظبي العالمي) تُتيح التملك الجزئي للعقارات اللبنانية عبر الرموز الرقمية.">Token-Lebnani is an Abu Dhabi based company (ADGM-regulated) enabling fractional ownership of Lebanese real estate through digital tokens.</p>
+                    <p data-en="We replace traditional barriers—banking gates, notary delays, and 6% transfer taxes—with a secure, direct, and efficient structure." data-ar="نستبدل العوائق التقليدية - مثل المصارف، وتأخيرات كاتب العدل، وضرائب التحويل البالغة 6% - بهيكل آمن ومباشر وفعّال.">We replace traditional barriers—banking gates, notary delays, and 6% transfer taxes—with a secure, direct, and efficient structure.</p>
+                    <p data-en="You own a stake directly in your digital wallet, receive automated USD income, and can transfer ownership in minutes without additional local costs or complexity." data-ar="تمتلك حصة مباشرة في محفظتك الرقمية، وتتلقى دخلاً تلقائياً بالدولار الأمريكي، ويمكنك نقل الملكية في دقائق دون تكاليف باهضة أو تعقيدات محلية إضافية.">You own a stake directly in your digital wallet, receive automated USD income, and can transfer ownership in minutes without additional local costs or complexity.</p>
                 </div>
             </div>
         </div>
@@ -485,34 +528,34 @@
         <!-- Slide 2: The Investment Proposition -->
         <div class="slide slide-2">
             <div class="container">
-                <h2>Fractional Ownership of Prime Lebanese Real Estate</h2>
-                <p>Access institutional-grade Beirut properties.</p>
-                <p>Entry position from $1,000.</p>
-                <p>No cap-table dilution. Full legal ownership.</p>
+                <h2 data-en="Fractional Ownership of Prime Lebanese Real Estate" data-ar="ملكية جزئية لعقارات لبنانية مميزة">Fractional Ownership of Prime Lebanese Real Estate</h2>
+                <p data-en="Access institutional-grade Beirut properties." data-ar="الوصول إلى عقارات لبنانية ذات الجودة.">Access institutional-grade Beirut properties.</p>
+                <p data-en="Entry position from $1,000." data-ar="سعر الدخول يبدأ من 1000 دولار أمريكي.">Entry position from $1,000.</p>
+                <p data-en="No cap-table dilution. Full legal ownership." data-ar="لا يوجد تخفيض لحصص الملكية من خلال تزايد أسهم الشركة. ملكية قانونية كاملة.">No cap-table dilution. Full legal ownership.</p>
             </div>
         </div>
 
         <!-- Slide 3: The Structural Solution -->
         <div class="slide slide-3">
             <div class="container">
-                <h2>The ADGM-Lebanon Bridge Structure</h2>
-                <p>We solve legacy friction—banking, taxes, management—with a regulated, dual-entity structure.</p>
-                <p>Your ownership is held and enforced under ADGM law.</p>
-                <p>The local Lebanese SPV ensures full compliance with property law.</p>
-                <p class="footnote pulse-animation">A legal bridge for modern ownership.</p>
+                <h2 data-en="The ADGM-Lebanon Bridge Structure" data-ar="هيكل جسر سوق أبوظبي العالمي - لبنان">The ADGM-Lebanon Bridge Structure</h2>
+                <p data-en="We solve legacy friction—banking, taxes, management—with a regulated, dual-entity structure." data-ar="نحل المشكلات المعقدة - المصرفية، والضرائب، والإدارة - من خلال هيكل منظم ذي كيانين(شركة إماراتية وأخرى لبنانية).">We solve legacy friction—banking, taxes, management—with a regulated, dual-entity structure.</p>
+                <p data-en="Your ownership is held and enforced under ADGM law." data-ar="تُحفظ ملكيتك وتُنفذ بموجب قانون سوق أبوظبي العالمي من خلال الشركة الاماراتية.">Your ownership is held and enforced under ADGM law.</p>
+                <p data-en="The local Lebanese SPV ensures full compliance with property law." data-ar="تضمن الشركة ذات الغرض الخاص اللبنانية المحلية الامتثال الكامل للقانون العقارات في لبنان.">The local Lebanese SPV ensures full compliance with property law.</p>
+                <p class="footnote pulse-animation" data-en="A legal bridge for modern ownership." data-ar="جسر قانوني للملكية الحديثة.">A legal bridge for modern ownership.</p>
             </div>
         </div>
 
         <!-- Slide 4: Core Benefit 1: Automated Operations -->
         <div class="slide slide-4">
             <div class="container">
-                <h2>Professional Management & Automated Income</h2>
-                <p>A vetted Facility Management Company (FMC) handles all operations: tenants, maintenance, expenses.</p>
-                <p>You receive net USD income, sent directly to your wallet.</p>
+                <h2 data-en="Professional Management & Automated Income" data-ar="إدارة احترافية ودخل مؤتمن">Professional Management & Automated Income</h2>
+                <p data-en="A vetted Facility Management Company (FMC) handles all operations: tenants, maintenance, expenses." data-ar="تتولى شركة إدارة مرافق معتمدة جميع العمليات: المستأجرين، الصيانة، والمصروفات.">A vetted Facility Management Company (FMC) handles all operations: tenants, maintenance, expenses.</p>
+                <p data-en="You receive net USD income, sent directly to your wallet." data-ar="تحصل على صافي دخل بالدولار الأمريكي، يُرسل مباشرةً إلى محفظتك.">You receive net USD income, sent directly to your wallet.</p>
                 
                 <div class="metric-container">
                     <div class="metric" id="yieldMetric">+4%</div>
-                    <p>Net USD yield after all fees and FMC expenses.</p>
+                    <p data-en="Net USD yield after all fees and FMC expenses." data-ar="صافي العائد بالدولار الأمريكي بعد خصم جميع الرسوم ومصروفات شركة إدارة المرافق.">Net USD yield after all fees and FMC expenses.</p>
                 </div>
             </div>
         </div>
@@ -520,62 +563,62 @@
         <!-- Slide 5: Core Benefit 2: Discreet & Secure Title -->
         <div class="slide slide-5">
             <div class="container">
-                <h2>Private Title Holding & Legal Recourse</h2>
+                <h2 data-en="Private Title Holding & Legal Recourse" data-ar="حيازة سند ملكية خاص وحق اللجوء القانوني">Private Title Holding & Legal Recourse</h2>
                 
                 <div class="privacy-columns">
                     <div class="column">
-                        <h3>Public Ledger (Anyone Can See)</h3>
-                        <h3>Traditional Lebanese property records</h3>
+                        <h3 data-en="Public Ledger (Anyone Can See)" data-ar="سجل عام (يمكن لأي شخص الاطلاع عليه)">Public Ledger (Anyone Can See)</h3>
+                        <p data-en="Traditional Lebanese property records" data-ar="سجلات الملكية اللبنانية التقليدية">Traditional Lebanese property records</p>
                     </div>
                     <div class="column">
-                        <h3>Private Registry (Only You & ADGM)</h3>
-                        <h3>ADGM-regulated ownership structure</h3>
+                        <h3 data-en="Private Registry (Only You & ADGM)" data-ar="سجل خاص (أنت و سوق أبوظبي العالمي فقط)">Private Registry (Only You & ADGM)</h3>
+                        <p data-en="ADGM-regulated ownership structure" data-ar="هيكل ملكية خاضع لقوانين سوق أبوظبي العالمي">ADGM-regulated ownership structure</p>
                     </div>
                 </div>
                 
-                <p>Your name never appears on Lebanese property records. All legal rights are enforceable through ADGM courts.</p>
-                <p class="footnote">Fully compliant with Lebanese property law.</p>
+                <p data-en="Your name never appears on Lebanese property records. All legal rights are enforceable through ADGM courts." data-ar="لا يظهر اسمك أبدًا في سجلات الملكية اللبنانية. جميع الحقوق القانونية قابلة للتنفيذ من خلال محاكم سوق أبوظبي العالمي.">Your name never appears on Lebanese property records. All legal rights are enforceable through ADGM courts.</p>
+                <p class="footnote" data-en="Fully compliant with Lebanese property law." data-ar="متوافق تمامًا مع قانون الملكية اللبناني.">Fully compliant with Lebanese property law.</p>
             </div>
         </div>
 
         <!-- Slide 6: Core Benefit 3: Designed Liquidity -->
         <div class="slide slide-6">
             <div class="container">
-                <h2>Built-in Liquidity & Tax Efficiency</h2>
+                <h2 data-en="Built-in Liquidity & Tax Efficiency" data-ar="سيولة مُدمجة وكفاءة ضريبية">Built-in Liquidity & Tax Efficiency</h2>
                 
                 <div class="flow-diagram">
-                    <div class="flow-item">Select from Featured Real Estate</div>
+                    <div class="flow-item" data-en="Select from Featured Real Estate" data-ar="اختر من بين العقارات المميزة المعروضة على الموقع">Select from Featured Real Estate</div>
                     <div class="flow-arrow">→</div>
-                    <div class="flow-item">Submit KYC Approval (&lt;7 min)</div>
+                    <div class="flow-item" data-en="Submit KYC Approval (<7 min)" data-ar="قدّم طلب الموافقة على إعرف عميلك (أقل من 7 دقائق)">Submit KYC Approval (&lt;7 min)</div>
                     <div class="flow-arrow">→</div>
-                    <div class="flow-item">Start Buying</div>
+                    <div class="flow-item" data-en="Start Buying" data-ar="ابدأ الشراء">Start Buying</div>
                 </div>
                 
-                <p>Sell your tokenized position on our secondary market, in minutes.</p>
-                <p class="footnote">*The 6% Lebanese property transfer tax is paid once at tokenization. No recurring sales tax on secondary trades.</p>
+                <p data-en="Sell your tokenized position on our secondary market, in minutes." data-ar="بيع حصتك المُرمّز في سوقنا الثانوي، في دقائق.">Sell your tokenized position on our secondary market, in minutes.</p>
+                <p class="footnote" data-en="*The 6% Lebanese property transfer tax is paid once at tokenization. No recurring sales tax on secondary trades." data-ar="*تُدفع ضريبة نقل الملكية اللبنانية البالغة 6% مرة واحدة عند الترميز. لا توجد ضريبة مبيعات دورية على عمليات التداول الثانوي.">*The 6% Lebanese property transfer tax is paid once at tokenization. No recurring sales tax on secondary trades.</p>
             </div>
         </div>
 
         <!-- Slide 7: The Investor Journey -->
         <div class="slide slide-7">
             <div class="container">
-                <h2>How to Invest: A Three-Step Process</h2>
+                <h2 data-en="How to Invest: A Three-Step Process" data-ar="كيفية الاستثمار: عملية من ثلاث خطوات">How to Invest: A Three-Step Process</h2>
                 
                 <div class="story-columns">
                     <div class="story-card">
-                        <h3>1. Select & Review</h3>
-                        <p>Browse featured assets</p>
-                        <div class="phone-screen">Review legal & audit documents</div>
+                        <h3 data-en="1. Select & Review" data-ar="1. الاختيار والمراجعة">1. Select & Review</h3>
+                        <p data-en="Browse featured assets" data-ar="تصفح الأصول المميزة">Browse featured assets</p>
+                        <div class="phone-screen" data-en="Review legal & audit documents" data-ar="مراجعة المستندات القانونية ومستندات التدقيق">Review legal & audit documents</div>
                     </div>
                     <div class="story-card">
-                        <h3>2. Onboard</h3>
-                        <p>Complete ADGM KYC</p>
-                        <div class="phone-screen">Sign agreements → Atomic settlement</div>
+                        <h3 data-en="2. Onboard" data-ar="2. التسجيل">2. Onboard</h3>
+                        <p data-en="Complete ADGM KYC" data-ar="إكمال إجراءات اعرف عميلك (KYC) في سوق أبوظبي العالمي (ADGM)">Complete ADGM KYC</p>
+                        <div class="phone-screen" data-en="Sign agreements → Atomic settlement" data-ar="توقيع الاتفاقيات ← التسوية الذرية">Sign agreements → Atomic settlement</div>
                     </div>
                     <div class="story-card">
-                        <h3>3. Own & Manage</h3>
-                        <p>Receive tokens</p>
-                        <div class="phone-screen">Earn income → Vote on decisions</div>
+                        <h3 data-en="3. Own & Manage" data-ar="3. التملك والإدارة">3. Own & Manage</h3>
+                        <p data-en="Receive tokens" data-ar="استلام الرموز">Receive tokens</p>
+                        <div class="phone-screen" data-en="Earn income → Vote on decisions" data-ar="كسب الدخل ← التصويت على القرارات">Earn income → Vote on decisions</div>
                     </div>
                 </div>
             </div>
@@ -584,13 +627,13 @@
         <!-- Slide 8: The Trust Layer -->
         <div class="slide slide-8">
             <div class="container">
-                <h2>One Regulated Bridge. Your Local Hassles, Handled.</h2>
-                <p>This is not a metaphor. It's a precise, dual-SPV legal structure that places your ownership under ADGM law while the asset remains fully compliant in Lebanon.</p>
+                <h2 data-en="One Regulated Bridge. Your Local Hassles, Handled." data-ar="جسر واحد مُنظّم. نُسهّل عليك التعامل مع متاعبك المحلية.">One Regulated Bridge. Your Local Hassles, Handled.</h2>
+                <p data-en="This is not a metaphor. It's a precise, dual-SPV legal structure that places your ownership under ADGM law while the asset remains fully compliant in Lebanon." data-ar="هذا ليس مجازًا. إنه هيكل قانوني دقيق ذو غرض خاص مزدوج، يضع ملكيتك تحت قانون سوق أبوظبي العالمي، بينما يظل الأصل متوافقًا تمامًا مع القوانين اللبنانية.">This is not a metaphor. It's a precise, dual-SPV legal structure that places your ownership under ADGM law while the asset remains fully compliant in Lebanon.</p>
                 
                 <div class="flow-diagram">
-                    <div class="flow-item">You & Digital Token</div>
-                    <div class="flow-arrow">← BRIDGE →</div>
-                    <div class="flow-item">Lebanese Real Estate</div>
+                    <div class="flow-item" data-en="You & Digital Token" data-ar="أنت و الرمز الرقمي">You & Digital Token</div>
+                    <div class="flow-arrow">← <span data-en="BRIDGE" data-ar="الجسر">BRIDGE</span> →</div>
+                    <div class="flow-item" data-en="Lebanese Real Estate" data-ar="العقارات اللبنانية">Lebanese Real Estate</div>
                 </div>
             </div>
         </div>
@@ -598,103 +641,103 @@
         <!-- Slide 9: The Workflow - Step 1 -->
         <div class="slide slide-9">
             <div class="container">
-                <h2>Step 1: Establishing the Ownership Bridge</h2>
+                <h2 data-en="Step 1: Establishing the Ownership Bridge" data-ar="الخطوة 1: إنشاء جسر الملكية">Step 1: Establishing the Ownership Bridge</h2>
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 1:</span> <span>Agreement → Property owner contracts with Token-Lebnani to tokenize the real estate.</span>
+                        <span class="step-number">Step 1:</span> <span data-en="Agreement → Property owner contracts with Token-Lebnani to tokenize the real estate." data-ar="اتفاقية → يتعاقد مالك العقار مع توكن لبناني لترميز العقار.">Agreement → Property owner contracts with Token-Lebnani to tokenize the real estate.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 2:</span> <span>ADGM Holding Company → We create a Holding Company in Abu Dhabi. It will issue tokens and be owned 100% by token holders.</span>
+                        <span class="step-number">Step 2:</span> <span data-en="ADGM Holding Company → We create a Holding Company in Abu Dhabi. It will issue tokens and be owned 100% by token holders." data-ar="الشركة القابضة لسوق أبوظبي العالمي → نقوم بإنشاء شركة قابضة في أبوظبي. ستصدر هذه الشركة رموزًا رقمية، وستكون مملوكة بالكامل لحاملي هذه الرموز.">ADGM Holding Company → We create a Holding Company in Abu Dhabi. It will issue tokens and be owned 100% by token holders.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 3:</span> <span>Lebanese SPV → The ADGM Holding Company incorporates a Lebanese SPV, which will legally hold the property title, satisfying local law.</span>
+                        <span class="step-number">Step 3:</span> <span data-en="Lebanese SPV → The ADGM Holding Company incorporates a Lebanese SPV, which will legally hold the property title, satisfying local law." data-ar="الشركة ذات الغرض الخاص اللبنانية → تمتلك الشركة القابضة لسوق أبوظبي العالمي الشركة لبنانية( ذات غرض خاص)، والتي تمتلك بدورها سند ملكية العقار قانونيًا، بما يتوافق مع القانون المحلي.">Lebanese SPV → The ADGM Holding Company incorporates a Lebanese SPV, which will legally hold the property title, satisfying local law.</span>
                     </div>
                 </div>
                 
-                <p>Key Insight: We build the legal vessels first. TLB provides the infrastructure; we do not invest in or own the property.</p>
+                <p data-en="Key Insight: We build the legal vessels first. TLB provides the infrastructure; we do not invest in or own the property." data-ar="ملاحظة أساسية: نبدأ ببناء الكيانات القانونية. توفر شركة Token-Lebnani البنية التحتية؛ فنحن لا نستثمر في العقار ولا نمتلكه.">Key Insight: We build the legal vessels first. TLB provides the infrastructure; we do not invest in or own the property.</p>
             </div>
         </div>
 
         <!-- Slide 10: The Workflow - Step 2 -->
         <div class="slide slide-10">
             <div class="container">
-                <h2>Step 2: Onboarding the Asset & Manager</h2>
+                <h2 data-en="Step 2: Onboarding the Asset & Manager" data-ar="الخطوة 2: تعيين مدير الأصول">Step 2: Onboarding the Asset & Manager</h2>
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 4:</span> <span>Title Transfer → The owner transfers the property to the Lebanese SPV. The 6% Lebanese registration tax is paid once, here.</span>
+                        <span class="step-number">Step 4:</span> <span data-en="Title Transfer → The owner transfers the property to the Lebanese SPV. The 6% Lebanese registration tax is paid once, here." data-ar="نقل الملكية → ينقل المالك ملكية العقار إلى الشركة اللبنانية (ذات الغرض الخاص). يتم دفع ضريبة التسجيل اللبنانية البالغة 6% مرة واحدة، هنا.">Title Transfer → The owner transfers the property to the Lebanese SPV. The 6% Lebanese registration tax is paid once, here.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 5:</span> <span>Appoint Facility Manager (FMC) → The SPV contracts an independent FMC to handle all operations: collect rent (in USD), pay expenses, and send net income to the UAE.</span>
+                        <span class="step-number">Step 5:</span> <span data-en="Appoint Facility Manager (FMC) → The SPV contracts an independent FMC to handle all operations: collect rent (in USD), pay expenses, and send net income to the UAE." data-ar="تعيين مدير المنشأة (FMC) → تتعاقد الشركة اللبنانية  (ذات الغرض الخاص) مع شركة مستقلة لإدارة القارات - جميع العمليات: تحصيل الإيجار (بالدولار الأمريكي)، ودفع المصاريف، وتحويل صافي الدخل إلى الإمارات العربية المتحدة.">Appoint Facility Manager (FMC) → The SPV contracts an independent FMC to handle all operations: collect rent (in USD), pay expenses, and send net income to the UAE.</span>
                     </div>
                 </div>
                 
-                <p>Key Insight: The FMC is a service provider under strict contract. They manage the hassle; you receive the net income.</p>
+                <p data-en="Key Insight: The FMC is a service provider under strict contract. They manage the hassle; you receive the net income." data-ar="ملاحظة أساسية: شركة مستقلة لإدارة القارات هي مزود خدمة بموجب عقد صارم. يتولى هو الإجراءات المعقدة؛ وأنت تحصل على صافي الدخل.">Key Insight: The FMC is a service provider under strict contract. They manage the hassle; you receive the net income.</p>
             </div>
         </div>
 
         <!-- Slide 11: The Workflow - Step 3 -->
         <div class="slide slide-11">
             <div class="container">
-                <h2>Step 3: How You Become an Owner</h2>
+                <h2 data-en="Step 3: How You Become an Owner" data-ar="الخطوة 3: كيف تصبح مالكًا">Step 3: How You Become an Owner</h2>
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 6:</span> <span>Token Issuance → Tokens representing 100% of the asset are minted to the owner, who can sell any portion on our platform.</span>
+                        <span class="step-number">Step 6:</span> <span data-en="Token Issuance → Tokens representing 100% of the asset are minted to the owner, who can sell any portion on our platform." data-ar="إصدار الرموز → يتم سكّ رموز تمثل 100% من الأصل للمالك، الذي يمكنه بيع أي جزء منه">Token Issuance → Tokens representing 100% of the asset are minted to the owner, who can sell any portion on our platform.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 7:</span> <span>Investor Onboarding → You complete ADGM-compliant KYC, sign smart contract and legal agreements. Atomic settlement delivers tokens to your wallet.</span>
+                        <span class="step-number">Step 7:</span> <span data-en="Investor Onboarding → You complete ADGM-compliant KYC, sign smart contract and legal agreements. Atomic settlement delivers tokens to your wallet." data-ar="انضمام المستثمرين → تُكمل إجراءات اعرف عميلك (KYC) المتوافقة مع متطلبات سوق أبوظبي العالمي (ADGM)، وتُوقع على العقد الذكي والاتفاقيات القانونية. يتم تسليم الرموز إلى محفظتك عبر التسوية الفورية.">Investor Onboarding → You complete ADGM-compliant KYC, sign smart contract and legal agreements. Atomic settlement delivers tokens to your wallet.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 8:</span> <span>Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market.</span>
+                        <span class="step-number">Step 8:</span> <span data-en="Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market." data-ar="حقوقك وخيارات الانسحاب → تتلقى دفعات تلقائية بالدولار الأمريكي، وحقوق التصويت وفقًا لمتطلبات سوق أبوظبي العالمي. يمكنك إعادة بيع الرموز في أي وقت في السوق الثانوية.">Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market.</span>
                     </div>
                 </div>
                 
-                <p>Key Insight: Your ownership is direct, legally enforceable, and designed for liquidity. The one-time 6% tax is behind you.</p>
+                <p data-en="Key Insight: Your ownership is direct, legally enforceable, and designed for liquidity. The one-time 6% tax is behind you." data-ar="الفكرة الرئيسية: ملكيتك مباشرة، وقابلة للتنفيذ قانونيًا، ومصممة لضمان السيولة. تم إلغاء ضريبة الـ ٦٪ لمرة واحدة.">Key Insight: Your ownership is direct, legally enforceable, and designed for liquidity. The one-time 6% tax is behind you.</p>
             </div>
         </div>
 
         <!-- Slide 12: Credibility -->
         <div class="slide slide-12">
             <div class="container">
-                <h2>Backed by Regulators Who Enforce Your Rights.</h2>
+                <h2 data-en="Backed by Regulators Who Enforce Your Rights." data-ar="مدعوم من جهات تنظيمية تُنفذ حقوقك.">Backed by Regulators Who Enforce Your Rights.</h2>
                 
                 <div class="badges-grid">
                     <!-- First Row -->
                     <div class="badge">
-                        <h3>ADGM Regulated</h3>
+                        <h3 data-en="ADGM Regulated" data-ar="خاضع لرقابة سوق أبوظبي العالمي">ADGM Regulated</h3>
                     </div>
                     <div class="badge">
-                        <h3>Title Deed Registered</h3>
+                        <h3 data-en="Title Deed Registered" data-ar="سند ملكية مسجل">Title Deed Registered</h3>
                     </div>
                     <div class="badge">
-                        <h3>ADGM Audited & Compliant</h3>
+                        <h3 data-en="ADGM Audited & Compliant" data-ar="يخضع لتدقيق سوق أبوظبي العالمي ومتوافق مع المعايير">ADGM Audited & Compliant</h3>
                     </div>
                     
                     <!-- Second Row -->
                     <div class="badge">
-                        <h3>All Documents Published</h3>
+                        <h3 data-en="All Documents Published" data-ar="جميع الوثائق منشورة">All Documents Published</h3>
                     </div>
                     <div class="badge">
-                        <h3>Full Legal & Commercial Ownership</h3>
+                        <h3 data-en="Full Legal & Commercial Ownership" data-ar="ملكية قانونية وتجارية كاملة">Full Legal & Commercial Ownership</h3>
                     </div>
                     <div class="badge">
-                        <h3>Vetted Facility Management</h3>
+                        <h3 data-en="Vetted Facility Management" data-ar="إدارة مرافق معتمدة">Vetted Facility Management</h3>
                     </div>
                 </div>
                 
-                <p>Operational structure. First asset tokenization: Summer 2026.</p>
+                <p data-en="Operational structure. First asset tokenization: Summer 2026." data-ar="الهيكل التشغيلي. أول عملية ترميز للأصول: صيف 2026.">Operational structure. First asset tokenization: Summer 2026.</p>
             </div>
         </div>
 
         <!-- Slide 13: Call to Action -->
         <div class="slide slide-13">
             <div class="container">
-                <h2>Build your legacy, not just your portfolio.</h2>
-                <p>I'm gathering insights from trusted advisors. Your perspective on this model would be invaluable.</p>
+                <h2 data-en="Build your legacy, not just your portfolio." data-ar="ابنِ إرثك، لا محفظتك الاستثمارية فقط.">Build your legacy, not just your portfolio.</h2>
+                <p data-en="I'm gathering insights from trusted advisors. Your perspective on this model would be invaluable." data-ar="أجمع آراء مستشارين موثوقين. ستكون وجهة نظرك حول هذا النموذج قيّمة للغاية.">I'm gathering insights from trusted advisors. Your perspective on this model would be invaluable.</p>
                 
-                <button class="cta-button" onclick="shareThoughts()">Share Your Thoughts</button>
+                <button class="cta-button" onclick="shareThoughts()" data-en="Share Your Thoughts" data-ar="شاركنا أفكارك">Share Your Thoughts</button>
             </div>
         </div>
 
@@ -703,19 +746,60 @@
     <!-- Navigation Buttons -->
     <div class="nav-buttons">
         <button class="nav-btn" id="prevBtn" onclick="goToSlide(currentSlide - 1)" disabled>
-            <i class="fas fa-chevron-left"></i> Previous
+            <i class="fas fa-chevron-left"></i> <span data-en="Previous" data-ar="السابق">Previous</span>
         </button>
         <button class="nav-btn" id="nextBtn" onclick="goToSlide(currentSlide + 1)">
-            Next <i class="fas fa-chevron-right"></i>
+            <span data-en="Next" data-ar="التالي">Next</span> <i class="fas fa-chevron-right"></i>
         </button>
     </div>
 
     <script>
+        let currentLanguage = 'en';
         let currentSlide = 0;
         const totalSlides = 13;
         const slides = document.querySelectorAll('.slide');
         const currentSlideElement = document.getElementById('currentSlide');
         const totalSlidesElement = document.getElementById('totalSlides');
+
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.includes(lang === 'en' ? 'English' : 'العربية')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update body direction
+            document.body.classList.toggle('rtl', lang === 'ar');
+            
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
+                if (element.tagName === 'BUTTON' && element.classList.contains('cta-button')) {
+                    // Special handling for CTA button hover effect
+                    const text = element.getAttribute(`data-${lang}`);
+                    element.innerHTML = text;
+                    // Re-add hover effect listener
+                    element.addEventListener('mouseenter', function() {
+                        if (lang === 'en') {
+                            this.innerHTML = text + ' Reserve Your Slice';
+                        } else {
+                            this.innerHTML = text + ' احجز حصتك';
+                        }
+                    });
+                    element.addEventListener('mouseleave', function() {
+                        this.innerHTML = text;
+                    });
+                } else {
+                    element.textContent = element.getAttribute(`data-${lang}`) || element.textContent;
+                }
+            });
+            
+            // Update progress indicator
+            updateNavigation();
+        }
 
         function updateNavigation() {
             const prevBtn = document.getElementById('prevBtn');
@@ -732,7 +816,6 @@
             slides.forEach((slide, index) => {
                 if (index === currentSlide) {
                     slide.classList.add('active');
-                    // Trigger animations for this slide
                     setTimeout(() => {
                         const animatedElements = slide.querySelectorAll('.column, .flow-item, .story-card, .step, .badge');
                         animatedElements.forEach((el, i) => {
@@ -744,7 +827,6 @@
                 }
             });
             
-            // Scroll to active slide
             slides[currentSlide].scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -773,48 +855,19 @@
             }, 16);
         }
 
-        // Modal for story cards
-        function showModal(content) {
-            alert('Confirm Sale: ' + content);
-        }
-
         // CTA button interaction
         function shareThoughts() {
-            const thoughts = prompt('Please share your thoughts on this model:');
+            const promptText = currentLanguage === 'en' 
+                ? 'Please share your thoughts on this model:' 
+                : 'يرجى مشاركة أفكارك حول هذا النموذج:';
+                
+            const thoughts = prompt(promptText);
             if (thoughts) {
-                // Send to Formspree
-                sendToFormspree(thoughts);
-                alert('Thank you for your valuable insights. We\'ll be in touch shortly.');
+                const thankYouText = currentLanguage === 'en'
+                    ? 'Thank you for your valuable insights. We\'ll be in touch shortly.'
+                    : 'شكراً لك على أفكارك القيمة. سنتواصل معك قريبًا.';
+                alert(thankYouText);
             }
-        }
-
-        // Function to send data to Formspree
-        function sendToFormspree(message) {
-            // Replace YOUR_FORMSPREE_ID with your actual Formspree form ID
-            const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORMSPREE_ID';
-            
-            fetch(formspreeEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: 'user@example.com',
-                    message: message,
-                    source: 'Token-Lebnani Microsite',
-                    timestamp: new Date().toISOString()
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Thoughts submitted successfully');
-                } else {
-                    console.error('Error submitting thoughts');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
         }
 
         // Initialize
@@ -851,34 +904,6 @@
                     }
                 }, 100);
             }, { passive: true });
-            
-            // Add touch swipe support for mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            document.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-            
-            document.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            }, { passive: true });
-            
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-                
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        goToSlide(currentSlide + 1);
-                    } else {
-                        // Swipe right - previous slide
-                        goToSlide(currentSlide - 1);
-                    }
-                }
-            }
         });
     </script>
 </body>
