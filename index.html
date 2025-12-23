@@ -16,23 +16,27 @@
             font-size: 32px;
             line-height: 1.4;
             color: #1a1a1a;
-            overflow-x: hidden;
+            overflow: hidden;
+            position: relative;
         }
 
         .slide {
             height: 100vh;
+            width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             padding: 2rem;
-            scroll-snap-align: start;
+            transition: all 0.5s ease;
         }
 
         .container {
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         h1, h2 {
@@ -54,23 +58,28 @@
             opacity: 0.9;
         }
 
-        /* Slide 1: Cover */
-        .slide-1 {
-            background: linear-gradient(135deg, #0a4291 0%, #1a1a1a 100%);
+        /* Teaser Slides (Introduction) - Lighter, Softer Colors */
+        .teaser-slide {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .slide-1 { background: linear-gradient(135deg, #0a4291 0%, #1e3a8a 100%); color: white; text-align: center; }
+        .slide-2 { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+        .slide-3 { background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); text-align: center; }
+        .slide-4 { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); }
+        .slide-5 { background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); }
+        .slide-6 { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); color: #1a1a1a; }
+        .slide-7 { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+
+        /* Fino Slides (Structure & Credibility) - Deeper, More Professional Colors */
+        .fino-slide {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
             color: white;
-            text-align: center;
         }
 
-        .sub-headline {
-            font-size: 24px;
-            opacity: 0.8;
-            margin-top: 1rem;
-        }
-
-        /* Slide 2: Hook */
-        .slide-2 {
-            background: #f0f0f0;
-        }
+        .slide-8 { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: white; }
+        .slide-9 { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 100%); color: white; }
+        .slide-10 { background: linear-gradient(135deg, #0a4291 0%, #107010 100%); color: white; text-align: center; }
 
         .split-screen {
             display: grid;
@@ -86,6 +95,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            border-radius: 12px;
         }
 
         .watermark {
@@ -101,12 +111,6 @@
             margin-top: 1rem;
         }
 
-        /* Slide 3: Problem */
-        .slide-3 {
-            background: #f0f0f0;
-            text-align: center;
-        }
-
         .problem-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -116,16 +120,11 @@
         }
 
         .problem-icon {
-            background: #ffffff;
+            background: rgba(255,255,255,0.9);
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Slide 4: Time Benefit */
-        .slide-4 {
-            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
         }
 
         .metric-container {
@@ -145,11 +144,6 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Slide 5: Privacy */
-        .slide-5 {
-            background: #f0f0f0;
-        }
-
         .privacy-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -162,19 +156,13 @@
         }
 
         .public {
-            background: #ffebee;
-            border: 2px solid #ffcdd2;
+            background: rgba(255, 235, 235, 0.9);
+            border: 2px solid rgba(255, 205, 210, 0.8);
         }
 
         .private {
-            background: #e8f5e8;
-            border: 2px solid #c8e6c9;
-        }
-
-        /* Slide 6: Liquidity */
-        .slide-6 {
-            background: linear-gradient(135deg, #0a4291 0%, #1a1a1a 100%);
-            color: white;
+            background: rgba(232, 245, 232, 0.9);
+            border: 2px solid rgba(200, 230, 201, 0.8);
         }
 
         .flow-diagram {
@@ -198,11 +186,6 @@
             opacity: 0.7;
         }
 
-        /* Slide 7: Story */
-        .slide-7 {
-            background: #f5f7fa;
-        }
-
         .story-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -211,7 +194,7 @@
         }
 
         .story-card {
-            background: white;
+            background: rgba(255,255,255,0.95);
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
@@ -231,12 +214,6 @@
             margin: 1rem 0;
             font-family: monospace;
             font-size: 24px;
-        }
-
-        /* Slide 8: Trust Layer */
-        .slide-8 {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a4291 100%);
-            color: white;
         }
 
         .bridge-diagram {
@@ -259,11 +236,6 @@
             opacity: 0.7;
         }
 
-        /* Slide 9: Credibility */
-        .slide-9 {
-            background: #f0f0f0;
-        }
-
         .badges {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -272,18 +244,11 @@
         }
 
         .badge {
-            background: white;
+            background: rgba(255,255,255,0.1);
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Slide 10: CTA */
-        .slide-10 {
-            background: linear-gradient(135deg, #0a4291 0%, #107010 100%);
-            color: white;
-            text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .cta-button {
@@ -308,11 +273,38 @@
             content: " Reserve Your Slice";
         }
 
-        /* Scroll Snap */
-        .slides-container {
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-            height: 100vh;
+        /* Navigation Buttons */
+        .nav-buttons {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.9);
+            border: 2px solid rgba(0,0,0,0.2);
+            color: #1a1a1a;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         /* Responsive */
@@ -335,13 +327,19 @@
             h2 {
                 font-size: 28px;
             }
+            
+            .nav-buttons {
+                flex-direction: column;
+                bottom: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="slides-container">
+    <!-- Slides Container -->
+    <div id="slidesContainer">
         
-        <!-- Slide 1: Cover -->
+        <!-- Slide 1: Cover (Teaser) -->
         <div class="slide slide-1">
             <div class="container">
                 <h1>Own Beirut. Not the Hassle.</h1>
@@ -349,7 +347,7 @@
             </div>
         </div>
 
-        <!-- Slide 2: Hook -->
+        <!-- Slide 2: Hook (Teaser) -->
         <div class="slide slide-2">
             <div class="container">
                 <div class="split-screen">
@@ -365,7 +363,7 @@
             </div>
         </div>
 
-        <!-- Slide 3: Problem -->
+        <!-- Slide 3: Problem (Teaser) -->
         <div class="slide slide-3">
             <div class="container">
                 <h2>The world changed. Ownership didn't.</h2>
@@ -381,7 +379,7 @@
             </div>
         </div>
 
-        <!-- Slide 4: Time Benefit -->
+        <!-- Slide 4: Time Benefit (Teaser) -->
         <div class="slide slide-4">
             <div class="container">
                 <h2>Your Time, Returned.</h2>
@@ -394,7 +392,7 @@
             </div>
         </div>
 
-        <!-- Slide 5: Privacy -->
+        <!-- Slide 5: Privacy (Teaser) -->
         <div class="slide slide-5">
             <div class="container">
                 <h2>Your Privacy, Protected.</h2>
@@ -415,7 +413,7 @@
             </div>
         </div>
 
-        <!-- Slide 6: Liquidity -->
+        <!-- Slide 6: Liquidity (Teaser) -->
         <div class="slide slide-6">
             <div class="container">
                 <h2>Liquidity Without Legacy Friction.</h2>
@@ -432,7 +430,7 @@
             </div>
         </div>
 
-        <!-- Slide 7: Story -->
+        <!-- Slide 7: Story (Teaser - End of Teaser Section) -->
         <div class="slide slide-7">
             <div class="container">
                 <h2>A Day in Your (Future) Life.</h2>
@@ -454,7 +452,7 @@
             </div>
         </div>
 
-        <!-- Slide 8: Trust Layer -->
+        <!-- Slide 8: Trust Layer (Fino - Start of Professional Section) -->
         <div class="slide slide-8">
             <div class="container">
                 <h2>One Regulated Bridge. Your Local Hassles, Handled.</h2>
@@ -479,7 +477,7 @@
             </div>
         </div>
 
-        <!-- Slide 9: Credibility -->
+        <!-- Slide 9: Credibility (Fino) -->
         <div class="slide slide-9">
             <div class="container">
                 <h2>Backed by Regulators Who Enforce Your Rights.</h2>
@@ -503,7 +501,7 @@
             </div>
         </div>
 
-        <!-- Slide 10: CTA -->
+        <!-- Slide 10: CTA (Fino) -->
         <div class="slide slide-10">
             <div class="container">
                 <h2>Let's build your legacy, not just your portfolio.</h2>
@@ -515,7 +513,37 @@
 
     </div>
 
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn" onclick="goToSlide(currentSlide - 1)" disabled>Previous</button>
+        <button class="nav-btn" id="nextBtn" onclick="goToSlide(currentSlide + 1)">Next</button>
+    </div>
+
     <script>
+        let currentSlide = 0;
+        const totalSlides = 10;
+        const slides = document.querySelectorAll('.slide');
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+            
+            // Hide all slides
+            slides.forEach((slide, index) => {
+                slide.style.display = index === currentSlide ? 'flex' : 'none';
+            });
+        }
+
+        function goToSlide(slideIndex) {
+            if (slideIndex >= 0 && slideIndex < totalSlides) {
+                currentSlide = slideIndex;
+                updateNavigation();
+            }
+        }
+
         // Animated yield metric
         function animateYield() {
             const metric = document.getElementById('yieldMetric');
@@ -547,20 +575,18 @@
             }
         }
 
-        // Initialize animations when page loads
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             animateYield();
+            updateNavigation();
             
-            // Add scroll snap polyfill for better UX
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(slide => {
-                slide.addEventListener('wheel', (e) => {
-                    if (e.deltaY > 0) {
-                        slide.nextElementSibling?.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                        slide.previousElementSibling?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    goToSlide(currentSlide + 1);
+                } else if (e.key === 'ArrowLeft') {
+                    goToSlide(currentSlide - 1);
+                }
             });
         });
     </script>
