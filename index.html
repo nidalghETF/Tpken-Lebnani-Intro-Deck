@@ -14,6 +14,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-size: 32px;
+            font-weight: 400;
             line-height: 1.4;
             color: #1a1a1a;
             overflow: hidden;
@@ -39,6 +40,7 @@
             z-index: 2;
         }
 
+        /* Consistent Typography */
         h1, h2 {
             font-weight: 700;
             margin-bottom: 1rem;
@@ -50,28 +52,57 @@
         }
 
         h2 {
-            font-size: 40px;
+            font-size: 48px;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         p {
+            font-size: 32px;
+            font-weight: 400;
             margin-bottom: 1rem;
             opacity: 0.9;
         }
 
-        /* Color Scheme */
+        /* Unified Color Scheme - Dark Blue Gradient */
         .slide-1 { background: #e6f2ff; }
         .slide-2 { background: #cce5ff; }
         .slide-3 { background: #b3d9ff; }
         .slide-4 { background: #99ccff; }
         .slide-5 { background: #80bfff; }
         .slide-6 { background: #66b3ff; }
-        .slide-7 { background: #0a4291; } /* Peak Dark Blue - Now has dark text */
+        .slide-7 { background: #4d94d9; }
         .slide-8 { background: #1a75c2; color: white; }
-        .slide-9 { background: #4d94d9; color: white; }
-        .slide-10 { background: #80bfff; color: white; }
-        .slide-11 { background: #b3d9ff; color: #1a1a1a; } /* Dark text on light blue */
-        .slide-12 { background: #cce5ff; color: #1a1a1a; }
-        .slide-13 { background: #e6f2ff; }
+        .slide-9 { background: #0a4291; color: white; }
+        .slide-10 { background: #1a75c2; color: white; }
+        .slide-11 { background: #4d94d9; color: white; }
+        .slide-12 { background: #66b3ff; }
+        .slide-13 { background: #80bfff; }
+
+        /* Specific dark text overrides for light backgrounds */
+        .slide-1 h1, .slide-1 h2, .slide-1 h3, .slide-1 p,
+        .slide-2 h1, .slide-2 h2, .slide-2 h3, .slide-2 p,
+        .slide-3 h1, .slide-3 h2, .slide-3 h3, .slide-3 p,
+        .slide-4 h1, .slide-4 h2, .slide-4 h3, .slide-4 p,
+        .slide-5 h1, .slide-5 h2, .slide-5 h3, .slide-5 p,
+        .slide-6 h1, .slide-6 h2, .slide-6 h3, .slide-6 p,
+        .slide-12 h1, .slide-12 h2, .slide-12 h3, .slide-12 p,
+        .slide-13 h1, .slide-13 h2, .slide-13 h3, .slide-13 p {
+            color: #1a1a1a;
+        }
+
+        /* Consistent white text for dark backgrounds */
+        .slide-7 h1, .slide-7 h2, .slide-7 h3, .slide-7 p,
+        .slide-8 h1, .slide-8 h2, .slide-8 h3, .slide-8 p,
+        .slide-9 h1, .slide-9 h2, .slide-9 h3, .slide-9 p,
+        .slide-10 h1, .slide-10 h2, .slide-10 h3, .slide-10 p,
+        .slide-11 h1, .slide-11 h2, .slide-11 h3, .slide-11 p {
+            color: white;
+        }
 
         .split-screen {
             display: grid;
@@ -82,6 +113,7 @@
 
         .footnote {
             font-size: 20px;
+            font-weight: 400;
             opacity: 0.7;
             margin-top: 1rem;
         }
@@ -97,16 +129,13 @@
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(10, 66, 145, 0.2);
         }
 
-        .public {
-            background: rgba(255, 235, 235, 0.9);
-            border: 2px solid rgba(255, 205, 210, 0.8);
-        }
-
-        .private {
-            background: rgba(232, 245, 232, 0.9);
-            border: 2px solid rgba(200, 230, 201, 0.8);
+        /* Removed pink/orange/yellow colors - using unified scheme */
+        .public h3, .private h3 {
+            color: #1a1a1a;
         }
 
         .flow-diagram {
@@ -118,16 +147,19 @@
         }
 
         .flow-item {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.9);
             padding: 1rem 2rem;
             border-radius: 8px;
             text-align: center;
             min-width: 150px;
+            color: #1a1a1a;
+            border: 2px solid rgba(10, 66, 145, 0.2);
         }
 
         .flow-arrow {
             font-size: 32px;
             opacity: 0.7;
+            color: #1a1a1a;
         }
 
         .story-columns {
@@ -138,18 +170,25 @@
         }
 
         .story-card {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
-            color: #1a1a1a; /* Dark text for story cards */
+            color: #1a1a1a;
+            border: 2px solid rgba(10, 66, 145, 0.2);
         }
 
         .story-card:hover {
             transform: translateY(-10px);
+        }
+
+        .story-card p {
+            font-size: 32px;
+            font-weight: 600;
+            color: #1a1a1a;
         }
 
         .phone-screen {
@@ -160,6 +199,7 @@
             font-family: monospace;
             font-size: 24px;
             color: #1a1a1a;
+            border: 1px solid #ddd;
         }
 
         .workflow-steps {
@@ -167,20 +207,21 @@
         }
 
         .step {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 1.5rem;
             border-radius: 8px;
             margin: 1rem 0;
-            border-left: 4px solid #ffffff;
+            border-left: 4px solid white;
+            color: white;
         }
 
         .step-number {
-            font-weight: bold;
-            color: #ffffff;
+            font-weight: 700;
+            color: white;
             margin-right: 0.5rem;
+            font-size: 32px;
         }
 
-        /* NEW: Two-row badge layout for Slide 12 */
         .badges-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -188,30 +229,32 @@
             margin: 2rem 0;
         }
 
-        .badge-row {
-            display: contents;
-        }
-
         .badge {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.9);
             padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
-            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
             justify-content: center;
             min-height: 120px;
+            border: 2px solid rgba(10, 66, 145, 0.2);
         }
 
-        /* Specific styles for light background slides */
-        .slide-11 .step {
+        .badge h3 {
+            color: #1a1a1a;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        /* Step styling for light background slides */
+        .slide-12 .step {
             background: rgba(10, 66, 145, 0.1);
             border-left: 4px solid #0a4291;
             color: #1a1a1a;
         }
 
-        .slide-11 .step-number {
+        .slide-12 .step-number {
             color: #0a4291;
         }
 
@@ -223,8 +266,8 @@
 
         .metric {
             font-size: 72px;
-            font-weight: bold;
-            color: #107010;
+            font-weight: 700;
+            color: #0a4291;
             animation: pulse 2s infinite;
         }
 
@@ -234,20 +277,20 @@
         }
 
         .cta-button {
-            background: white;
-            color: #0a4291;
+            background: #0a4291;
+            color: white;
             padding: 1.5rem 3rem;
             border: none;
             border-radius: 12px;
             font-size: 32px;
-            font-weight: bold;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             margin: 2rem 0;
         }
 
         .cta-button:hover {
-            background: #f0f0f0;
+            background: #1a75c2;
             transform: scale(1.05);
         }
 
@@ -267,21 +310,21 @@
         }
 
         .nav-btn {
-            background: rgba(255,255,255,0.9);
-            border: 2px solid rgba(0,0,0,0.2);
-            color: #1a1a1a;
+            background: rgba(10, 66, 145, 0.9);
+            border: 2px solid rgba(10, 66, 145, 0.9);
+            color: white;
             padding: 1rem 2rem;
             border-radius: 8px;
             cursor: pointer;
             font-size: 20px;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
         .nav-btn:hover {
-            background: white;
+            background: #1a75c2;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .nav-btn:disabled {
@@ -302,12 +345,16 @@
                 font-size: 24px;
             }
             
-            h1 {
+            h1, h2 {
                 font-size: 36px;
             }
             
-            h2 {
+            h3 {
                 font-size: 28px;
+            }
+            
+            p {
+                font-size: 24px;
             }
             
             .nav-buttons {
@@ -318,6 +365,15 @@
             .flow-diagram {
                 flex-direction: column;
                 gap: 1rem;
+            }
+            
+            .metric {
+                font-size: 48px;
+            }
+            
+            .cta-button {
+                font-size: 24px;
+                padding: 1rem 2rem;
             }
         }
     </style>
@@ -371,10 +427,10 @@
                 <h2>Your Privacy, Protected.</h2>
                 
                 <div class="privacy-columns">
-                    <div class="column public">
+                    <div class="column">
                         <h3>Public Ledger (Anyone Can See)</h3>
                     </div>
-                    <div class="column private">
+                    <div class="column">
                         <h3>Private Registry (Only You & ADGM)</h3>
                     </div>
                 </div>
@@ -404,19 +460,19 @@
         <!-- Slide 7: Story - "A Day in the Life" -->
         <div class="slide slide-7">
             <div class="container">
-                <h2 style="color: #1a1a1a;">A Day in Your (Future) Life.</h2>
+                <h2>A Day in Your (Future) Life.</h2>
                 
                 <div class="story-columns">
                     <div class="story-card" onclick="showModal('Portfolio: Beirut Building (Partial)')">
-                        <p style="color: #1a1a1a;">Open the app</p>
+                        <p>Open the app</p>
                         <div class="phone-screen">Portfolio: Beirut Building (Partial)</div>
                     </div>
                     <div class="story-card" onclick="showModal('Confirm Sale: 10 tokens @ $1,200')">
-                        <p style="color: #1a1a1a;">Taps 'Sell 10 Tokens'</p>
+                        <p>Taps 'Sell 10 Tokens'</p>
                         <div class="phone-screen">Confirm Sale: 10 tokens @ $1,200</div>
                     </div>
                     <div class="story-card" onclick="showModal('Wallet: +$12,000')">
-                        <p style="color: #1a1a1a;">Sees USD deposit</p>
+                        <p>Sees USD deposit</p>
                         <div class="phone-screen">Wallet: +$12,000</div>
                     </div>
                 </div>
@@ -473,7 +529,7 @@
         <!-- Slide 11: The Workflow - Step 3 -->
         <div class="slide slide-11">
             <div class="container">
-                <h2 style="color: #1a1a1a;">Step 3: How You Become an Owner</h2>
+                <h2>Step 3: How You Become an Owner</h2>
                 
                 <div class="workflow-steps">
                     <div class="step">
@@ -487,7 +543,7 @@
                     </div>
                 </div>
                 
-                <p style="color: #1a1a1a;">Key Insight: Your ownership is direct, legally enforceable, and designed for liquidity. The one-time 6% tax is behind you.</p>
+                <p>Key Insight: Your ownership is direct, legally enforceable, and designed for liquidity. The one-time 6% tax is behind you.</p>
             </div>
         </div>
 
@@ -496,7 +552,6 @@
             <div class="container">
                 <h2>Backed by Regulators Who Enforce Your Rights.</h2>
                 
-                <!-- NEW: Two-row badge grid -->
                 <div class="badges-grid">
                     <!-- First Row -->
                     <div class="badge">
