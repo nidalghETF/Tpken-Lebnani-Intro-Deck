@@ -16,7 +16,7 @@
             font-size: 32px;
             font-weight: 400;
             line-height: 1.4;
-            color: #1a1a1a;
+            color: white;
             overflow: hidden;
             position: relative;
         }
@@ -40,145 +40,110 @@
             z-index: 2;
         }
 
-        /* Consistent Typography */
+        /* Consistent Typography - ALL SAME */
         h1, h2 {
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
-        }
-
-        h1 {
             font-size: 48px;
-        }
-
-        h2 {
-            font-size: 48px;
+            color: white;
         }
 
         h3 {
             font-size: 32px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            color: white;
         }
 
         p {
             font-size: 32px;
             font-weight: 400;
             margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Unified Color Scheme - Dark Blue Gradient */
-        .slide-1 { background: #e6f2ff; }
-        .slide-2 { background: #cce5ff; }
-        .slide-3 { background: #b3d9ff; }
-        .slide-4 { background: #99ccff; }
-        .slide-5 { background: #80bfff; }
-        .slide-6 { background: #66b3ff; }
-        .slide-7 { background: #4d94d9; }
-        .slide-8 { background: #1a75c2; color: white; }
-        .slide-9 { background: #0a4291; color: white; }
-        .slide-10 { background: #1a75c2; color: white; }
-        .slide-11 { background: #4d94d9; color: white; }
-        .slide-12 { background: #66b3ff; }
-        .slide-13 { background: #80bfff; }
-
-        /* Specific dark text overrides for light backgrounds */
-        .slide-1 h1, .slide-1 h2, .slide-1 h3, .slide-1 p,
-        .slide-2 h1, .slide-2 h2, .slide-2 h3, .slide-2 p,
-        .slide-3 h1, .slide-3 h2, .slide-3 h3, .slide-3 p,
-        .slide-4 h1, .slide-4 h2, .slide-4 h3, .slide-4 p,
-        .slide-5 h1, .slide-5 h2, .slide-5 h3, .slide-5 p,
-        .slide-6 h1, .slide-6 h2, .slide-6 h3, .slide-6 p,
-        .slide-12 h1, .slide-12 h2, .slide-12 h3, .slide-12 p,
-        .slide-13 h1, .slide-13 h2, .slide-13 h3, .slide-13 p {
-            color: #1a1a1a;
-        }
-
-        /* Consistent white text for dark backgrounds */
-        .slide-7 h1, .slide-7 h2, .slide-7 h3, .slide-7 p,
-        .slide-8 h1, .slide-8 h2, .slide-8 h3, .slide-8 p,
-        .slide-9 h1, .slide-9 h2, .slide-9 h3, .slide-9 p,
-        .slide-10 h1, .slide-10 h2, .slide-10 h3, .slide-10 p,
-        .slide-11 h1, .slide-11 h2, .slide-11 h3, .slide-11 p {
+            opacity: 0.95;
             color: white;
         }
 
-        .split-screen {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
+        /* UNIFIED COLOR SCHEME - Dark Blue Gradient */
+        .slide-1 { background: #0a4291; }  /* Dark Blue */
+        .slide-2 { background: #0a4291; }
+        .slide-3 { background: #0a4291; }
+        .slide-4 { background: #0a4291; }
+        .slide-5 { background: #0a4291; }
+        .slide-6 { background: #0a4291; }
+        .slide-7 { background: #0a4291; }
+        .slide-8 { background: #0a4291; }
+        .slide-9 { background: #0a4291; }
+        .slide-10 { background: #0a4291; }
+        .slide-11 { background: #0a4291; }
+        .slide-12 { background: #0a4291; }
+        .slide-13 { background: #0a4291; }
 
+        /* Consistent layout components */
         .footnote {
             font-size: 20px;
             font-weight: 400;
             opacity: 0.7;
             margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .privacy-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 2rem;
             margin: 2rem 0;
+        }
+
+        /* UNIFIED BLOCK STYLING - All blocks white with dark blue border */
+        .column, .flow-item, .story-card, .step, .badge {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #0a4291;
+            border-radius: 12px;
+            color: #0a4291;
+            text-align: center;
         }
 
         .column {
             padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(10, 66, 145, 0.2);
         }
 
-        /* Removed pink/orange/yellow colors - using unified scheme */
-        .public h3, .private h3 {
-            color: #1a1a1a;
+        .column h3 {
+            color: #0a4291;
+            font-weight: 700;
         }
 
         .flow-diagram {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
         .flow-item {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-align: center;
-            min-width: 150px;
-            color: #1a1a1a;
-            border: 2px solid rgba(10, 66, 145, 0.2);
+            padding: 1.5rem;
+            min-width: 180px;
+            font-weight: 600;
         }
 
         .flow-arrow {
             font-size: 32px;
             opacity: 0.7;
-            color: #1a1a1a;
+            color: white;
         }
 
         .story-columns {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
         .story-card {
-            background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease;
-            color: #1a1a1a;
-            border: 2px solid rgba(10, 66, 145, 0.2);
         }
 
         .story-card:hover {
@@ -186,9 +151,8 @@
         }
 
         .story-card p {
-            font-size: 32px;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #0a4291;
         }
 
         .phone-screen {
@@ -198,7 +162,7 @@
             margin: 1rem 0;
             font-family: monospace;
             font-size: 24px;
-            color: #1a1a1a;
+            color: #0a4291;
             border: 1px solid #ddd;
         }
 
@@ -207,19 +171,22 @@
         }
 
         .step {
-            background: rgba(255, 255, 255, 0.1);
             padding: 1.5rem;
-            border-radius: 8px;
             margin: 1rem 0;
-            border-left: 4px solid white;
-            color: white;
+            border-left: 4px solid #0a4291;
+            text-align: left;
         }
 
         .step-number {
             font-weight: 700;
-            color: white;
+            color: #0a4291;
             margin-right: 0.5rem;
             font-size: 32px;
+        }
+
+        .step span:not(.step-number) {
+            color: #0a4291;
+            font-weight: 400;
         }
 
         .badges-grid {
@@ -230,45 +197,25 @@
         }
 
         .badge {
-            background: rgba(255, 255, 255, 0.9);
             padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
+            min-height: 140px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 120px;
-            border: 2px solid rgba(10, 66, 145, 0.2);
         }
 
         .badge h3 {
-            color: #1a1a1a;
-            font-size: 32px;
-            font-weight: 600;
-        }
-
-        /* Step styling for light background slides */
-        .slide-12 .step {
-            background: rgba(10, 66, 145, 0.1);
-            border-left: 4px solid #0a4291;
-            color: #1a1a1a;
-        }
-
-        .slide-12 .step-number {
             color: #0a4291;
-        }
-
-        .slide-12 .badge {
-            background: rgba(10, 66, 145, 0.1);
-            border: 2px solid rgba(10, 66, 145, 0.2);
-            color: #1a1a1a;
+            font-size: 28px;
+            font-weight: 700;
         }
 
         .metric {
             font-size: 72px;
             font-weight: 700;
-            color: #0a4291;
+            color: white;
             animation: pulse 2s infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes pulse {
@@ -277,10 +224,10 @@
         }
 
         .cta-button {
-            background: #0a4291;
-            color: white;
+            background: white;
+            color: #0a4291;
             padding: 1.5rem 3rem;
-            border: none;
+            border: 2px solid white;
             border-radius: 12px;
             font-size: 32px;
             font-weight: 700;
@@ -290,7 +237,8 @@
         }
 
         .cta-button:hover {
-            background: #1a75c2;
+            background: #0a4291;
+            color: white;
             transform: scale(1.05);
         }
 
@@ -310,19 +258,20 @@
         }
 
         .nav-btn {
-            background: rgba(10, 66, 145, 0.9);
-            border: 2px solid rgba(10, 66, 145, 0.9);
-            color: white;
+            background: white;
+            border: 2px solid white;
+            color: #0a4291;
             padding: 1rem 2rem;
             border-radius: 8px;
             cursor: pointer;
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s ease;
         }
 
         .nav-btn:hover {
-            background: #1a75c2;
+            background: #0a4291;
+            color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
@@ -374,6 +323,15 @@
             .cta-button {
                 font-size: 24px;
                 padding: 1rem 2rem;
+            }
+            
+            .flow-item {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .badge h3 {
+                font-size: 24px;
             }
         }
     </style>
@@ -494,13 +452,13 @@
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 1:</span> Agreement → Property owner contracts with Token-Lebnani to tokenize the real estate.
+                        <span class="step-number">Step 1:</span> <span>Agreement → Property owner contracts with Token-Lebnani to tokenize the real estate.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 2:</span> ADGM Holding Company → We create a Holding Company in Abu Dhabi. It will issue tokens and be owned 100% by token holders.
+                        <span class="step-number">Step 2:</span> <span>ADGM Holding Company → We create a Holding Company in Abu Dhabi. It will issue tokens and be owned 100% by token holders.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 3:</span> Lebanese SPV → The ADGM Holding Company incorporates a Lebanese SPV, which will legally hold the property title, satisfying local law.
+                        <span class="step-number">Step 3:</span> <span>Lebanese SPV → The ADGM Holding Company incorporates a Lebanese SPV, which will legally hold the property title, satisfying local law.</span>
                     </div>
                 </div>
                 
@@ -515,10 +473,10 @@
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 4:</span> Title Transfer → The owner transfers the property to the Lebanese SPV. The 6% Lebanese registration tax is paid once, here.
+                        <span class="step-number">Step 4:</span> <span>Title Transfer → The owner transfers the property to the Lebanese SPV. The 6% Lebanese registration tax is paid once, here.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 5:</span> Appoint Facility Manager (FMC) → The SPV contracts an independent FMC to handle all operations: collect rent (in USD), pay expenses, and send net income to the UAE.
+                        <span class="step-number">Step 5:</span> <span>Appoint Facility Manager (FMC) → The SPV contracts an independent FMC to handle all operations: collect rent (in USD), pay expenses, and send net income to the UAE.</span>
                     </div>
                 </div>
                 
@@ -533,13 +491,13 @@
                 
                 <div class="workflow-steps">
                     <div class="step">
-                        <span class="step-number">Step 6:</span> Token Issuance → Tokens representing 100% of the asset are minted to the owner, who can sell any portion on our platform.
+                        <span class="step-number">Step 6:</span> <span>Token Issuance → Tokens representing 100% of the asset are minted to the owner, who can sell any portion on our platform.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 7:</span> Investor Onboarding → You complete ADGM-compliant KYC, sign smart contract and legal agreements. Atomic settlement delivers tokens to your wallet.
+                        <span class="step-number">Step 7:</span> <span>Investor Onboarding → You complete ADGM-compliant KYC, sign smart contract and legal agreements. Atomic settlement delivers tokens to your wallet.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 8:</span> Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market.
+                        <span class="step-number">Step 8:</span> <span>Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market.</span>
                     </div>
                 </div>
                 
@@ -646,7 +604,7 @@
             alert('Confirm Sale: ' + content);
         }
 
-        // CTA button interaction - Now with Formspree integration
+        // CTA button interaction
         function shareThoughts() {
             const thoughts = prompt('Please share your thoughts on this model:');
             if (thoughts) {
@@ -667,7 +625,7 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email: 'user@example.com', // You can collect email separately if needed
+                    email: 'user@example.com',
                     message: message,
                     source: 'Token-Lebnani Microsite',
                     timestamp: new Date().toISOString()
