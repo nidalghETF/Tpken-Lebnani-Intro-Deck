@@ -1,40 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token-Lebnani | ADGM-Regulated Real Estate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Token Lebnani - Fractional Real Estate Investment</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ===========================================
-           BASE STYLES
-           =========================================== */
-        * {
+        /* ===== RESET & BASE ===== */
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 28px;
-            font-weight: 400;
-            line-height: 1.4;
-            color: white;
             overflow: hidden;
-            position: relative;
-            scroll-behavior: smooth;
+            font-family: 'Cormorant Garamond', 'Times New Roman', serif;
         }
-
-        body.rtl {
-            direction: rtl;
-            font-family: 'Cairo', 'Inter', sans-serif;
+        
+        /* ===== ANIMATED BACKGROUND ===== */
+        body {
+            background: #0a192f url('background.png') bottom left repeat-x;
+            background-size: 1500px auto;
+            animation: bgScroll 80s linear infinite;
+        }
+        
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: -3000px 0; }
+        }
+        
+        /* ===== OVERLAY & CONTAINER ===== */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* ===== LOGO CONTAINER ===== */
+        .logo-container {
+            text-align: center;
+            padding: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .main-logo {
+            width: 1200px;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            margin-bottom: 40px;
+        }
+        
+        /* ===== ENTER BUTTON ===== */
+        .enter-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0a192f;
+            background: linear-gradient(135deg, #D4AF37, #b8942a);
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .enter-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #b8942a, #a07d1f);
+        }
+        
+        .enter-button i {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .enter-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+            }
+        }
+        
+        /* ===== EXPLANATORY TEXT STYLES ===== */
+        .explanatory-text {
+            font-size: 14px;
+            opacity: 0.6;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .main-logo {
+                width: 768px;
+                margin-bottom: 30px;
+            }
+            
+            .enter-button {
+                padding: 10px 20px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-logo {
+                width: 480px;
+                margin-bottom: 25px;
+            }
+            
+            .enter-button {
+                padding: 8px 20px;
+                font-size: 1.0rem;
+            }
         }
 
         /* ===========================================
-           LANGUAGE SWITCHER
+           EXISTING STYLES FROM ORIGINAL FILE
            =========================================== */
+        /* Language Switcher */
         .language-switcher {
             position: fixed;
             top: 1rem;
@@ -70,9 +187,7 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* ===========================================
-           SLIDES
-           =========================================== */
+        /* Slides */
         .slide {
             height: 100vh;
             width: 100vw;
@@ -99,9 +214,7 @@
             z-index: 2;
         }
 
-        /* ===========================================
-           TYPOGRAPHY
-           =========================================== */
+        /* Typography */
         h1, h2 {
             font-weight: 700;
             margin-bottom: 1rem;
@@ -125,19 +238,15 @@
             color: white;
         }
 
-        /* ===========================================
-           COLOR SCHEME - Dark Blue
-           =========================================== */
+        /* Color Scheme - Dark Blue */
         .slide-0, .slide-1, .slide-2, .slide-3, .slide-4, 
         .slide-5, .slide-6, .slide-7, .slide-8, .slide-9, 
         .slide-10, .slide-11, .slide-12, .slide-13 {
             background: #0a4291;
         }
 
-        /* ===========================================
-           SLIDE 0: LOGO SCREEN
-           =========================================== */
-        .logo-container {
+        /* Logo Screen */
+        .logo-container-slide {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -145,7 +254,7 @@
             width: 100%;
         }
 
-        .main-logo {
+        .main-logo-slide {
             max-width: 70%;
             max-height: 70vh;
             width: auto;
@@ -159,9 +268,7 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* ===========================================
-           FOOTNOTES
-           =========================================== */
+        /* Footnotes */
         .footnote {
             font-size: 20px;
             font-weight: 400;
@@ -170,9 +277,7 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* ===========================================
-           COMPONENTS
-           =========================================== */
+        /* Components */
         .privacy-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -200,191 +305,7 @@
             transform: translateY(0);
         }
 
-        /* Animation delays */
-        .slide.active .column:nth-child(1) { transition-delay: 0.2s; }
-        .slide.active .column:nth-child(2) { transition-delay: 0.4s; }
-        .slide.active .flow-item:nth-child(1) { transition-delay: 0.2s; }
-        .slide.active .flow-item:nth-child(3) { transition-delay: 0.4s; }
-        .slide.active .flow-item:nth-child(5) { transition-delay: 0.6s; }
-        .slide.active .story-card:nth-child(1) { transition-delay: 0.2s; }
-        .slide.active .story-card:nth-child(2) { transition-delay: 0.4s; }
-        .slide.active .story-card:nth-child(3) { transition-delay: 0.6s; }
-        .slide.active .step:nth-child(1) { transition-delay: 0.2s; }
-        .slide.active .step:nth-child(2) { transition-delay: 0.4s; }
-        .slide.active .step:nth-child(3) { transition-delay: 0.6s; }
-        .slide.active .badge:nth-child(1) { transition-delay: 0.2s; }
-        .slide.active .badge:nth-child(2) { transition-delay: 0.3s; }
-        .slide.active .badge:nth-child(3) { transition-delay: 0.4s; }
-        .slide.active .badge:nth-child(4) { transition-delay: 0.5s; }
-        .slide.active .badge:nth-child(5) { transition-delay: 0.6s; }
-        .slide.active .badge:nth-child(6) { transition-delay: 0.7s; }
-
-        .column {
-            padding: 2rem;
-        }
-
-        .column h3, .story-card h3, .story-card p {
-            color: #0a4291;
-            font-weight: 700;
-        }
-
-        .column p {
-            color: #0a4291;
-            font-size: 20px;
-            margin-top: 0.5rem;
-        }
-
-        .flow-diagram {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .flow-item {
-            padding: 1.5rem;
-            min-width: 180px;
-            font-weight: 600;
-        }
-
-        .flow-arrow {
-            font-size: 32px;
-            opacity: 0.7;
-            color: white;
-        }
-
-        .story-columns {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .story-card {
-            padding: 2rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .story-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .phone-screen {
-            background: #f0f0f0;
-            padding: 1rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            font-family: monospace;
-            font-size: 20px;
-            color: #0a4291;
-            border: 1px solid #ddd;
-        }
-
-        .workflow-steps {
-            margin: 2rem 0;
-        }
-
-        .step {
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border-left: 4px solid #0a4291;
-            text-align: left;
-        }
-
-        body.rtl .step {
-            text-align: right;
-            border-left: none;
-            border-right: 4px solid #0a4291;
-        }
-
-        .step-number {
-            font-weight: 700;
-            color: #0a4291;
-            margin-right: 0.5rem;
-            font-size: 28px;
-        }
-
-        body.rtl .step-number {
-            margin-right: 0;
-            margin-left: 0.5rem;
-        }
-
-        .step span:not(.step-number) {
-            color: #0a4291;
-            font-weight: 400;
-        }
-
-        .badges-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .badge {
-            padding: 1.5rem;
-            min-height: 140px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .badge h3 {
-            color: #0a4291;
-            font-size: 24px;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
-        }
-
-        .metric {
-            font-size: 64px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .metric-container {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        .cta-button {
-            background: white;
-            color: #0a4291;
-            padding: 1.2rem 2.5rem;
-            border: 2px solid white;
-            border-radius: 12px;
-            font-size: 28px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            background: #0a4291;
-            color: white;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Bold text class for Arabic */
-        .bold-text {
-            font-weight: 700;
-        }
-
-        /* ===========================================
-           PROGRESS INDICATOR
-           =========================================== */
+        /* Progress Indicator */
         .progress-container {
             position: fixed;
             top: 1rem;
@@ -397,290 +318,52 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        body.rtl .progress-container {
-            right: auto;
-            left: 1rem;
-        }
-
         .progress-text {
             font-size: 16px;
             font-weight: 600;
             color: white;
         }
 
-        /* ===========================================
-           ANIMATIONS
-           =========================================== */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        /* Hidden slides container */
+        #slidesContainer {
+            display: none;
         }
 
-        .pulse-animation {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(5px); }
-        }
-
-        .flow-arrow {
-            animation: bounce 2s infinite;
-        }
-
-        /* ===========================================
-           MOBILE RESPONSIVENESS
-           =========================================== */
-        @media (max-width: 768px) {
-            body {
-                font-size: 18px !important;
-            }
-            
-            h1, h2 {
-                font-size: 24px !important;
-            }
-            
-            h3 {
-                font-size: 20px !important;
-            }
-            
-            p {
-                font-size: 18px !important;
-            }
-            
-            .slide {
-                padding: 1rem !important;
-                padding-top: 4rem !important;
-                padding-bottom: 2rem !important;
-                overflow-y: auto;
-                height: 100vh;
-                align-items: flex-start;
-            }
-            
-            /* Specific adjustments for slides 6,7,8,10,13 */
-            .slide-6, .slide-7, .slide-8, .slide-10, .slide-13 {
-                padding-top: 3rem !important;
-                padding-bottom: 1rem !important;
-                justify-content: flex-start;
-            }
-            
-            .slide-6 .container, 
-            .slide-7 .container, 
-            .slide-8 .container, 
-            .slide-10 .container, 
-            .slide-13 .container {
-                padding-top: 0;
-                padding-bottom: 3rem;
-            }
-            
-            .container {
-                padding: 0.8rem;
-                height: auto;
-                min-height: auto;
-            }
-            
-            .language-switcher {
-                top: 1rem;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90%;
-                max-width: 280px;
-            }
-            
-            .lang-btn {
-                padding: 0.5rem 1rem;
-                font-size: 14px;
-            }
-            
-            .progress-container {
-                top: 4.5rem;
-                right: 1rem;
-                padding: 0.3rem 0.8rem;
-            }
-            
-            body.rtl .progress-container {
-                right: auto;
-                left: 1rem;
-            }
-            
-            .privacy-columns,
-            .story-columns,
-            .badges-grid {
-                grid-template-columns: 1fr !important;
-                gap: 0.8rem;
-                margin: 1rem 0 !important;
-            }
-            
-            /* Mobile-specific adjustments for flow diagram */
-            .flow-diagram {
-                flex-direction: column;
-                gap: 0.5rem;
-                margin: 1rem 0 !important;
-            }
-            
-            .flow-arrow {
-                transform: rotate(90deg);
-                margin: 0.5rem 0;
-            }
-            
-            .column, .flow-item, .story-card, .badge {
-                padding: 1rem !important;
-                margin: 0.3rem 0;
-            }
-            
-            .story-card {
-                padding: 1rem !important;
-                min-height: auto;
-            }
-            
-            .step {
-                padding: 1rem !important;
-                margin: 0.8rem 0 !important;
-                font-size: 16px;
-            }
-            
-            .metric {
-                font-size: 36px !important;
-                margin: 0.5rem 0;
-            }
-            
-            .metric-container {
-                margin: 1rem 0 !important;
-            }
-            
-            .cta-button {
-                font-size: 20px !important;
-                padding: 1rem 1.5rem !important;
-                width: 100%;
-                max-width: 300px;
-                margin: 1rem auto !important;
-                display: block;
-            }
-            
-            .main-logo {
-                max-width: 85% !important;
-                max-height: 50vh !important;
-            }
-            
-            .phone-screen {
-                font-size: 16px !important;
-                padding: 0.8rem;
-                margin: 0.5rem 0;
-            }
-            
-            .footnote {
-                font-size: 14px !important;
-                margin-top: 0.5rem;
-            }
-            
-            /* Additional mobile spacing adjustments */
-            h1, h2 {
-                margin-bottom: 0.5rem !important;
-            }
-            
-            p {
-                margin-bottom: 0.7rem !important;
-            }
-            
-            .workflow-steps {
-                margin: 1rem 0 !important;
-            }
-            
-            .badge {
-                min-height: 100px;
-                padding: 0.8rem !important;
-            }
-            
-            .badge h3 {
-                font-size: 18px !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 16px !important;
-            }
-            
-            h1, h2 {
-                font-size: 22px !important;
-                line-height: 1.3;
-            }
-            
-            h3 {
-                font-size: 18px !important;
-            }
-            
-            .container {
-                padding: 0.6rem;
-            }
-            
-            .slide {
-                padding-top: 3.5rem !important;
-                padding-bottom: 1.5rem !important;
-            }
-            
-            .slide-6, .slide-7, .slide-8, .slide-10, .slide-13 {
-                padding-top: 2.5rem !important;
-                padding-bottom: 1rem !important;
-            }
-            
-            .flow-item {
-                padding: 0.8rem !important;
-                min-width: auto;
-                width: 100%;
-            }
-            
-            .badge {
-                min-height: 80px;
-                padding: 0.6rem !important;
-            }
-            
-            .badge h3 {
-                font-size: 16px !important;
-            }
-            
-            .step {
-                padding: 0.8rem !important;
-                font-size: 14px;
-            }
-            
-            .step-number {
-                font-size: 16px;
-            }
-            
-            .cta-button {
-                font-size: 18px !important;
-                padding: 0.8rem 1.2rem !important;
-            }
-        }
-
-        /* ===========================================
-           HIDDEN ELEMENTS
-           =========================================== */
-        .nav-buttons {
-            display: none !important;
+        /* Splash page visibility */
+        #splashPage {
+            display: flex;
         }
     </style>
 </head>
 <body>
+    <!-- SPLASH PAGE -->
+    <div id="splashPage" class="overlay">
+        <div class="logo-container">
+            <img src="Blue Logo.png" alt="Token Lebnani Logo" class="main-logo">
+            <a href="#" class="enter-button" onclick="enterPresentation()">
+                <span>ENTER</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
     <!-- Language Switcher -->
-    <div class="language-switcher" id="languageSwitcher">
+    <div class="language-switcher" id="languageSwitcher" style="display: none;">
         <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
         <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
     </div>
 
     <!-- Progress Indicator -->
-    <div class="progress-container">
+    <div class="progress-container" id="progressContainer" style="display: none;">
         <div class="progress-text"><span id="currentSlide">1</span> / <span id="totalSlides">14</span></div>
     </div>
 
-    <!-- Slides Container -->
+    <!-- SLIDES CONTAINER -->
     <div id="slidesContainer">
-        <!-- Slide 0: Logo -->
-        <div class="slide slide-0 active">
-            <div class="container logo-container">
-                <img src="Blue Logo.png" alt="Token-Lebnani Logo" class="main-logo">
+        <!-- Slide 0: Logo (Hidden initially) -->
+        <div class="slide slide-0">
+            <div class="container logo-container-slide">
+                <img src="Blue Logo.png" alt="Token-Lebnani Logo" class="main-logo-slide">
             </div>
         </div>
 
@@ -730,7 +413,10 @@
                 <h2 data-en="The ADGM-Lebanon Bridge Structure" data-ar="هيكل جسر سوق أبوظبي العالمي - لبنان">The ADGM-Lebanon Bridge Structure</h2>
                 <p data-en="We solve legacy friction—banking, taxes, management—with a regulated, dual-entity structure." data-ar="نحل المشكلات المعقدة - المصرفية، والضرائب، والإدارة - من خلال هيكل منظم ذي كيانين(شركة إماراتية وأخرى لبنانية).">We solve legacy friction—banking, taxes, management—with a regulated, dual-entity structure.</p>
                 <p data-en="Your ownership is held and enforced under ADGM law." data-ar="تُحفظ ملكيتك وتُنفذ بموجب قانون سوق أبوظبي العالمي من خلال الشركة الاماراتية.">Your ownership is held and enforced under ADGM law.</p>
-                <p data-en="The local Lebanese SPV ensures full compliance with property law." data-ar="تضمن الشركة ذات الغرض الخاص اللبنانية المحلية الامتثال الكامل للقانون العقارات في لبنان.">The local Lebanese SPV ensures full compliance with property law.</p>
+                <p data-en="The local Lebanese SPV ensures full compliance with property law." data-ar="تضمن الشركة ذات الغرض الخاص اللبنانية المحلية الامتثال الكامل للقانون العقارات في لبنان.">
+                    The local Lebanese SPV ensures full compliance with property law.
+                    <span class="explanatory-text">SPV: Lebanese privet company, ownes the Title Deed of the Real Astate</span>
+                </p>
                 <p class="footnote pulse-animation" data-en="A legal bridge for modern ownership." data-ar="جسر قانوني للملكية الحديثة.">A legal bridge for modern ownership.</p>
             </div>
         </div>
@@ -744,11 +430,15 @@
                 
                 <div class="metric-container">
                     <div class="metric" id="yieldMetric">+4%</div>
-                    <p data-en="Net USD yield after all fees and FMC expenses." data-ar="صافي العائد بالدولار الأمريكي بعد خصم جميع الرسوم ومصروفات شركة إدارة المرافق.">Net USD yield after all fees and FMC expenses.</p>
+                    <p data-en="Net USD yield after all fees and FMC expenses." data-ar="صافي العائد بالدولار الأمريكي بعد خصم جميع الرسوم ومصروفات شركة إدارة المرافق.">
+                        Net USD yield after all fees and FMC expenses.
+                        <span class="explanatory-text">4%: based on latest lebanese law of 5% commercial rent</span>
+                    </p>
                 </div>
             </div>
         </div>
 
+        <!-- Continue with remaining slides... -->
         <!-- Slide 5: Privacy -->
         <div class="slide slide-5">
             <div class="container">
@@ -879,7 +569,7 @@
                         <span class="step-number">Step 7:</span> <span data-en="Investor Onboarding → You complete ADGM-compliant KYC, sign smart contract and legal agreements. Atomic settlement delivers tokens to your wallet." data-ar="انضمام المستثمرين → تُكمل إجراءات اعرف عميلك (KYC) المتوافقة مع متطلبات سوق أبوظبي العالمي (ADGM)، وتُوقع على العقد الذكي والاتفاقيات القانونية. يتم تسليم tokens إلى محفظتك عبر التسوية الفورية.">Investor Onboarding → You complete ADGM-compliant KYC, sign smart contract and legal agreements. Atomic settlement delivers tokens to your wallet.</span>
                     </div>
                     <div class="step">
-                        <span class="step-number">Step 8:</span> <span data-en="Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market." data-ar="حقوقك وخيارات الانسحاب → تتلقى دفعات تلقائية بالدولار الأمريكي، وحقوق التصويت وفقًا لمتطلبات سوق أبوظبي العالمي. يمكنك إعادة بيع tokens في أي وقت في السوق الثانوية.">Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market.</span>
+                        <span class="step-number">Step 8:</span> <span data-en="Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market." data-ar="حقوقك وخيارات الانسحاب → تتلقى دفعات تلقائية بالدولار الأمريكي، وحقوق التصويت وفقًا لمتطلبات سوق أبوظبي العالمي. يمكنك إعادة بيع tokens في أي وقت في السوق الثانوي.">Your Rights & Exit → You receive automated USD payouts, voting rights, and full ADGM legal recourse. Resell tokens anytime on the secondary market.</span>
                     </div>
                 </div>
                 
@@ -940,6 +630,20 @@
         const currentSlideElement = document.getElementById('currentSlide');
         const totalSlidesElement = document.getElementById('totalSlides');
         const languageSwitcher = document.getElementById('languageSwitcher');
+        const progressContainer = document.getElementById('progressContainer');
+        const slidesContainer = document.getElementById('slidesContainer');
+        const splashPage = document.getElementById('splashPage');
+
+        // ===========================================
+        // SPLASH PAGE FUNCTIONALITY
+        // ===========================================
+        function enterPresentation() {
+            splashPage.style.display = 'none';
+            slidesContainer.style.display = 'block';
+            languageSwitcher.style.display = 'flex';
+            progressContainer.style.display = 'block';
+            updateNavigation();
+        }
 
         // ===========================================
         // LANGUAGE SWITCHING
@@ -1038,18 +742,23 @@
         // ===========================================
         function shareThoughts() {
             // Direct to Google Form
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSeU0O0e3U8cUvBxLGpCWf7UVoeq7pJwtPOsBb_bKGaLOSSCiw/viewform', '_blank');
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSeU0O0e3U8cUvBxLGpCWf7UVoeq7pJwtPOsBb_bKGaLOSSCiw/viewform ', '_blank');
         }
 
         // ===========================================
         // INITIALIZATION
         // ===========================================
         document.addEventListener('DOMContentLoaded', function() {
-            animateYield();
-            updateNavigation();
+            // Start with splash page visible and slides hidden
+            slidesContainer.style.display = 'none';
+            languageSwitcher.style.display = 'none';
+            progressContainer.style.display = 'none';
             
             // Keyboard navigation
             document.addEventListener('keydown', function(e) {
+                // Only handle navigation if in presentation mode
+                if (slidesContainer.style.display === 'none') return;
+                
                 if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
                     goToSlide(currentSlide + 1);
                     e.preventDefault();
@@ -1068,6 +777,9 @@
             // Wheel navigation
             let scrollTimeout;
             document.addEventListener('wheel', function(e) {
+                // Only handle navigation if in presentation mode
+                if (slidesContainer.style.display === 'none') return;
+                
                 clearTimeout(scrollTimeout);
                 scrollTimeout = setTimeout(function() {
                     if (e.deltaY > 0) {
@@ -1087,6 +799,9 @@
             }, { passive: true });
             
             document.addEventListener('touchend', function(e) {
+                // Only handle navigation if in presentation mode
+                if (slidesContainer.style.display === 'none') return;
+                
                 touchEndY = e.changedTouches[0].screenY;
                 handleSwipe();
             }, { passive: true });
