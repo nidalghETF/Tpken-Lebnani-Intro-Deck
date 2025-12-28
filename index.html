@@ -18,7 +18,7 @@
             font-family: 'Cormorant Garamond', 'Times New Roman', serif;
         }
         
-        /* ===== ANIMATED BACKGROUND ===== */
+        /* ===== ANIMATED BACKGROUND - SPLASH PAGE ===== */
         body {
             background: #0a192f url('background.png') bottom left repeat-x;
             background-size: 1500px auto;
@@ -30,7 +30,7 @@
             100% { background-position: -3000px 0; }
         }
         
-        /* ===== OVERLAY & CONTAINER ===== */
+        /* ===== OVERLAY & CONTAINER - SPLASH PAGE ===== */
         .overlay {
             position: absolute;
             top: 0;
@@ -44,7 +44,7 @@
             justify-content: center;
         }
         
-        /* ===== LOGO CONTAINER ===== */
+        /* ===== LOGO CONTAINER - SPLASH PAGE ===== */
         .logo-container {
             text-align: center;
             padding: 20px;
@@ -58,7 +58,7 @@
             margin-bottom: 40px;
         }
         
-        /* ===== ENTER BUTTON ===== */
+        /* ===== ENTER BUTTON - SPLASH PAGE ===== */
         .enter-button {
             display: inline-flex;
             align-items: center;
@@ -93,7 +93,7 @@
             transform: translateX(5px);
         }
         
-        /* ===== ANIMATIONS ===== */
+        /* ===== ANIMATIONS - SPLASH PAGE ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -114,16 +114,7 @@
             }
         }
         
-        /* ===== EXPLANATORY TEXT STYLES ===== */
-        .explanatory-text {
-            font-size: 14px;
-            opacity: 0.6;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 0.5rem;
-            font-weight: 400;
-        }
-        
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* ===== RESPONSIVE DESIGN - SPLASH PAGE ===== */
         @media (max-width: 768px) {
             .main-logo {
                 width: 768px;
@@ -149,9 +140,28 @@
         }
 
         /* ===========================================
-           EXISTING STYLES FROM ORIGINAL FILE
+           INTERNAL PAGES STYLES (AFTER ENTERING)
            =========================================== */
-        /* Language Switcher */
+        
+        /* Base styles for presentation mode */
+        body.presentation-mode {
+            font-family: 'Inter', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.4;
+            color: white;
+            overflow: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+            background: #0B0B60; /* Matte Dark Blue */
+        }
+
+        body.presentation-mode.rtl {
+            direction: rtl;
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        /* Language Switcher - Now on first content slide */
         .language-switcher {
             position: fixed;
             top: 1rem;
@@ -180,7 +190,7 @@
 
         .lang-btn.active {
             background: white;
-            color: #0a4291;
+            color: #0B0B60;
         }
 
         .lang-btn:hover:not(.active) {
@@ -199,6 +209,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.8s ease;
+            background: #0B0B60; /* Matte Dark Blue */
         }
 
         .slide.active {
@@ -238,36 +249,6 @@
             color: white;
         }
 
-        /* Color Scheme - Dark Blue */
-        .slide-0, .slide-1, .slide-2, .slide-3, .slide-4, 
-        .slide-5, .slide-6, .slide-7, .slide-8, .slide-9, 
-        .slide-10, .slide-11, .slide-12, .slide-13 {
-            background: #0a4291;
-        }
-
-        /* Logo Screen */
-        .logo-container-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-        }
-
-        .main-logo-slide {
-            max-width: 70%;
-            max-height: 70vh;
-            width: auto;
-            height: auto;
-            animation: logoReveal 2s ease-out;
-            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.2));
-        }
-
-        @keyframes logoReveal {
-            0% { opacity: 0; transform: scale(0.85); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
         /* Footnotes */
         .footnote {
             font-size: 20px;
@@ -287,9 +268,9 @@
 
         .column, .flow-item, .story-card, .step, .badge {
             background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #0a4291;
+            border: 2px solid #0B0B60;
             border-radius: 12px;
-            color: #0a4291;
+            color: #0B0B60;
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
@@ -318,20 +299,84 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        body.presentation-mode.rtl .progress-container {
+            right: auto;
+            left: 1rem;
+        }
+
         .progress-text {
             font-size: 16px;
             font-weight: 600;
             color: white;
         }
 
-        /* Hidden slides container */
-        #slidesContainer {
-            display: none;
+        /* Explanatory text for SPV and 4% */
+        .explanatory-text {
+            font-size: 14px;
+            opacity: 0.6;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0.5rem;
+            font-weight: 400;
+            display: block;
         }
 
-        /* Splash page visibility */
-        #splashPage {
-            display: flex;
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body.presentation-mode {
+                font-size: 18px !important;
+            }
+            
+            body.presentation-mode h1, 
+            body.presentation-mode h2 {
+                font-size: 24px !important;
+            }
+            
+            body.presentation-mode h3 {
+                font-size: 20px !important;
+            }
+            
+            body.presentation-mode p {
+                font-size: 18px !important;
+            }
+            
+            body.presentation-mode .slide {
+                padding: 1rem !important;
+                padding-top: 4rem !important;
+                padding-bottom: 2rem !important;
+                overflow-y: auto;
+                height: 100vh;
+                align-items: flex-start;
+            }
+            
+            body.presentation-mode .container {
+                padding: 0.8rem;
+                height: auto;
+                min-height: auto;
+            }
+            
+            body.presentation-mode .language-switcher {
+                top: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 280px;
+            }
+            
+            body.presentation-mode .lang-btn {
+                padding: 0.5rem 1rem;
+                font-size: 14px;
+            }
+            
+            body.presentation-mode .progress-container {
+                top: 4.5rem;
+                right: 1rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            body.presentation-mode.rtl .progress-container {
+                right: auto;
+                left: 1rem;
+            }
         }
     </style>
 </head>
@@ -347,28 +392,21 @@
         </div>
     </div>
 
-    <!-- Language Switcher -->
-    <div class="language-switcher" id="languageSwitcher" style="display: none;">
-        <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
-        <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
-    </div>
-
-    <!-- Progress Indicator -->
-    <div class="progress-container" id="progressContainer" style="display: none;">
-        <div class="progress-text"><span id="currentSlide">1</span> / <span id="totalSlides">14</span></div>
-    </div>
-
     <!-- SLIDES CONTAINER -->
-    <div id="slidesContainer">
-        <!-- Slide 0: Logo (Hidden initially) -->
-        <div class="slide slide-0">
-            <div class="container logo-container-slide">
-                <img src="Blue Logo.png" alt="Token-Lebnani Logo" class="main-logo-slide">
-            </div>
+    <div id="slidesContainer" style="display: none;">
+        <!-- Language Switcher - Now on first content slide -->
+        <div class="language-switcher" id="languageSwitcher">
+            <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+            <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
         </div>
 
-        <!-- Slide 1: Cover -->
-        <div class="slide slide-1">
+        <!-- Progress Indicator -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-text"><span id="currentSlide">1</span> / <span id="totalSlides">13</span></div>
+        </div>
+
+        <!-- Slide 1: Cover (Now first content slide) -->
+        <div class="slide slide-1 active">
             <div class="container">
                 <h1 data-en="Own Beirut. Not the Hassle." data-ar="امتلك في لبنان. بدون متاعب.">Own Beirut. Not the Hassle.</h1>
                 <p class="sub-headline" data-en="Token-Lebnani | ADGM-Regulated" data-ar="Token-Lebnani | خاضعة لرقابة سوق أبوظبي العالمي">Token-Lebnani | ADGM-Regulated</p>
@@ -407,6 +445,7 @@
             </div>
         </div>
 
+        <!-- Continue with remaining slides... -->
         <!-- Slide 3: Structural Solution -->
         <div class="slide slide-3">
             <div class="container">
@@ -625,7 +664,7 @@
         // ===========================================
         let currentLanguage = 'en';
         let currentSlide = 0;
-        const totalSlides = 14;
+        const totalSlides = 13; // Updated to 13 since we removed slide 0
         const slides = document.querySelectorAll('.slide');
         const currentSlideElement = document.getElementById('currentSlide');
         const totalSlidesElement = document.getElementById('totalSlides');
@@ -640,8 +679,7 @@
         function enterPresentation() {
             splashPage.style.display = 'none';
             slidesContainer.style.display = 'block';
-            languageSwitcher.style.display = 'flex';
-            progressContainer.style.display = 'block';
+            document.body.classList.add('presentation-mode');
             updateNavigation();
         }
 
@@ -681,15 +719,6 @@
             // Update progress indicator
             currentSlideElement.textContent = currentSlide + 1;
             totalSlidesElement.textContent = totalSlides;
-            
-            // Show/hide language switcher based on current slide
-            if (currentSlide === 0) {
-                languageSwitcher.style.opacity = '1';
-                languageSwitcher.style.pointerEvents = 'auto';
-            } else {
-                languageSwitcher.style.opacity = '0';
-                languageSwitcher.style.pointerEvents = 'none';
-            }
             
             // Manage active slides
             slides.forEach((slide, index) => {
@@ -751,8 +780,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Start with splash page visible and slides hidden
             slidesContainer.style.display = 'none';
-            languageSwitcher.style.display = 'none';
-            progressContainer.style.display = 'none';
             
             // Keyboard navigation
             document.addEventListener('keydown', function(e) {
